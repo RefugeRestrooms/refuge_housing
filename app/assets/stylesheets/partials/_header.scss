@@ -1,4 +1,14 @@
 header {
+  padding: 1rem;
   font-size: 4em;
   text-align: center;
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: inherit;
+      border-bottom: 3px solid black;
+    }
+  }
 }
