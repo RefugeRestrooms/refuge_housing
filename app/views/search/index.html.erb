@@ -2,9 +2,12 @@
   <%= render "search/form" %>
 </section>
 
-      <td>
-        <%= [post.city, post.state].join(", ") %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<section>
+  <ul class="posts">
+    <% @posts.each do |post| %>
+      <li>
+        <%= render post %>
+      </li>
+    <% end %>
+  </ul>
+</section>

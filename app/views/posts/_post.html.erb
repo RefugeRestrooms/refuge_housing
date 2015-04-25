@@ -1,0 +1,30 @@
+<div class="post">
+  <strong>
+    <%= link_to post.name, post_path(post) %>
+  </strong>
+
+  <div>
+    <%= post.street %>
+  </div>
+
+  <div>
+    <%= [post.city, post.state].join(", ") %>
+  </div>
+
+  <div>
+    <%= post.country %>
+  </div>
+
+  <div class="description">
+    <%= post.description %>
+  </div>
+
+  <div>
+    <%=
+      link_to(
+        "map",
+        "https://www.google.com/maps?hl=en&q=#{ maps_query(post) }"
+      )
+    %>
+  </div>
+</div>
