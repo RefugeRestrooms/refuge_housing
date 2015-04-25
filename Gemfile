@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 gem "coffee-rails", "~> 4.1.0"
-gem "foundation-rails", "~> 5.5.1.2"
 gem "geocoder", "~> 1.2.8"
 gem "jbuilder", "~> 2.0"
 gem "jquery-rails"

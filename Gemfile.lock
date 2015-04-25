@@ -56,9 +56,6 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.5.2)
-    foundation-rails (5.5.1.2)
-      railties (>= 3.1.0)
-      sass (>= 3.3.0, < 3.5)
     geocoder (1.2.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
@@ -166,7 +163,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-  foundation-rails (~> 5.5.1.2)
   geocoder (~> 1.2.8)
   jbuilder (~> 2.0)
   jquery-rails
