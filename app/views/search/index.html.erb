@@ -1,2 +1,10 @@
 <%= render "layouts/header" %> 
 <%= render "layouts/search" %>
+<table>
+<% @posts.each do |post| %>
+  <tr>
+    <td><b><%= post.name %>:</b></td>
+    <td><%= post.description %></td>
+  </tr>
+<% end %>
+</table>

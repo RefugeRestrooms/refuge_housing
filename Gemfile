@@ -6,7 +6,7 @@ gem "geocoder", "~> 1.2.8"
 gem "jbuilder", "~> 2.0"
 gem "jquery-rails"
 gem "pg"
-gem 'pg_search'
+gem "pg_search"
 gem "rails", "4.2.0"
 gem "sass-rails", "~> 5.0"
 gem "sdoc", "~> 0.4.0", group: :doc
