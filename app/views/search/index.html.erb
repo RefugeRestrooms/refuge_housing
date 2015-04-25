@@ -1,9 +1,16 @@
 <%= render "search/form" %>
 <table>
-<% @posts.each do |post| %>
-  <tr>
-    <td><b><%= link_to post.name, post_path(post) %>:</b></td>
-    <td><%= [post.city, post.state].join(", ") %></td>
-  </tr>
-<% end %>
+  <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <strong>
+          <%= link_to post.name, post_path(post) %>:
+        </strong>
+      </td>
+
+      <td>
+        <%= [post.city, post.state].join(", ") %>
+      </td>
+    </tr>
+  <% end %>
 </table>
