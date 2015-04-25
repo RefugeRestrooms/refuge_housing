@@ -1,10 +1,13 @@
-<%= render "layouts/header" %> 
-<%= render "layouts/search" %>
-<table>
-<% @posts.each do |post| %>
-  <tr>
-    <td><b><%= link_to post.name, post_path(post) %>:</b></td>
-    <td><%= [post.city, post.state].join(", ") %></td>
-  </tr>
-<% end %>
-</table>
+<section>
+  <%= render "search/form" %>
+</section>
+
+<section>
+  <ul class="posts">
+    <% @posts.each do |post| %>
+      <li>
+        <%= render post %>
+      </li>
+    <% end %>
+  </ul>
+</section>

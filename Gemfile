@@ -1,17 +1,18 @@
 source "https://rubygems.org"
 
-gem "coffee-rails", "~> 4.1.0"
-gem "foundation-rails", "~> 5.5.1.2"
-gem "geocoder", "~> 1.2.8"
-gem "jbuilder", "~> 2.0"
-gem "jquery-rails"
+gem "rails", "4.2.0"
+
 gem "pg"
 gem "pg_search"
-gem "rails", "4.2.0"
-gem "sass-rails", "~> 5.0"
-gem "sdoc", "~> 0.4.0", group: :doc
-gem "turbolinks"
+
+gem "geocoder", "~> 1.2.8"
+
+gem "jquery-rails"
 gem "uglifier", ">= 1.3.0"
+
+gem "sass-rails", "~> 5.0.0"
+gem "bourbon", "~> 4.2.2"
+gem "neat", "~> 1.7.2"
 
 group :development, :test do
   gem "byebug"

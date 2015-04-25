@@ -1,0 +1,12 @@
+form {
+  @include span-columns(4);
+  @include shift(4);
+
+  text-align: center;
+
+  input {
+    display: inline-block;
+    text-align: center;
+    margin: inherit auto;
+  }
+}

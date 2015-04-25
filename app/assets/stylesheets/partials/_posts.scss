@@ -1,0 +1,15 @@
+.posts {
+  @include span-columns(6);
+  @include shift(3);
+}
+
+.post {
+  background: $light-gray;
+  padding: 2em;
+  margin: 2em;
+  border-radius: $base-border-radius;
+
+  .description {
+    font-style: italic;
+  }
+}
