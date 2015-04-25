@@ -1,0 +1,30 @@
+<%= form_for :post, url: create_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :street %><br>
+    <%= f.text_field :street %>
+  </p>
+
+  <p>
+    <%= f.label :neighborhood %><br>
+    <%= f.text_field :neighborhood %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
