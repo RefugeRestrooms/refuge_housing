@@ -4,6 +4,5 @@ Rails.application.routes.draw do
 
   # get 'search' => 'search'
 
-  # get "posts"
-  # get 'posts/:id' => 'catalog#view'
+  get 'posts/:id', to: 'posts#show', as: 'post'
 end

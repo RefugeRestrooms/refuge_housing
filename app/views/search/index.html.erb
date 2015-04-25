@@ -3,8 +3,8 @@
 <table>
 <% @posts.each do |post| %>
   <tr>
-    <td><b><%= post.name %>:</b></td>
-    <td><%= post.description %></td>
+    <td><b><%= link_to post.name, post_path(post) %>:</b></td>
+    <td><%= [post.city, post.state].join(", ") %></td>
   </tr>
 <% end %>
 </table>
