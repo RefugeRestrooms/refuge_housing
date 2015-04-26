@@ -1,9 +1,23 @@
 AllCops:
-    RunRailsCops: true
+  RunRailsCops: true
 
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
+  Exclude:
+    - "vendor/**/*"
+    - "bin/**/*"
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
 

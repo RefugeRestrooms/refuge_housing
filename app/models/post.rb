@@ -2,7 +2,7 @@
 class Post < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search, against: {
-    name: "A",
+    title: "A",
     street: "B",
     city: "C",
     state: "D",
@@ -11,10 +11,17 @@ class Post < ActiveRecord::Base
     country: "D"
   },
 
-  using: { tsearch: { dictionary: "english" } },
-  ignoring: :accents
+                           using: { tsearch: { dictionary: "english" } },
+                           ignoring: :accents
 
-  validates :name, :city, :state, presence: true
+  validates :title,
+            :city,
+            :state,
+            :country,
+            :email,
+            :expiration,
+            :validation,
+            presence: true
 
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
