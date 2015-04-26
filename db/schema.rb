@@ -11,27 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425232707) do
-
+ActiveRecord::Schema.define(version: 20_150_425_232_707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
-    t.text     "description"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.text "description"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.text     "street"
-    t.text     "city"
-    t.text     "state"
-    t.text     "country"
-    t.text     "title"
-    t.text     "neighborhood"
-    t.text     "email"
+    t.text "street"
+    t.text "city"
+    t.text "state"
+    t.text "country"
+    t.text "title"
+    t.text "neighborhood"
+    t.text "email"
     t.datetime "expiration"
-    t.string   "validation"
-    t.boolean  "show"
+    t.string "validation"
+    t.boolean "show"
   end
-
 end

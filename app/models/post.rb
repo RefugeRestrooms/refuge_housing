@@ -11,10 +11,17 @@ class Post < ActiveRecord::Base
     country: "D"
   },
 
-  using: { tsearch: { dictionary: "english" } },
-  ignoring: :accents
+                           using: { tsearch: { dictionary: "english" } },
+                           ignoring: :accents
 
-  validates :title, :city, :state, :email, :expiration, :show, :validation,  presence: true
+  validates :title,
+            :city,
+            :state,
+            :country,
+            :email,
+            :expiration,
+            :validation,
+            presence: true
 
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude

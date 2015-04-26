@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(create_constructor(post_params))
 
-    @post.save
+    @post.save!
     redirect_to success_url
   end
 
@@ -16,12 +16,23 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(
-                           :title,
-                           :email,
-                           :street,
-                           :neighborhood,
-                           :description
-                          )
+    params.require(:post)
+      .permit(
+        :title,
+        :email,
+        :street,
+        :city,
+        :state,
+        :country,
+        :neighborhood,
+        :description
+      )
+  end
+
+  def create_constructor(init_params)
+    require "securerandom"
+    init_params[:expiration] = Time.current.utc.iso8601 + (24 * 60 * 60)
+    init_params[:validation] = SecureRandom.hex
+    init_params
   end
 end

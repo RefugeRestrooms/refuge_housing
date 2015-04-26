@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get "search/index"
   root "search#index"
+
+  get "search/index", to: "search#index", as: "index"
 
   get "posts/new", to: "posts#new", as: "new"
 

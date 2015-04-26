@@ -11,9 +11,9 @@ Post.create(
   neighborhood: "tenderloin",
   description: "text1",
   email: "foo1@bar.com",
-  expiration: Time.now + (2*7*24*60*60),
+  expiration: Time.current.utc.iso8601 + (2 * 7 * 24 * 60 * 60),
   validation: "72811119ec956862b5e91a02358cfc22",
-  show: true,
+  show: true
 )
 
 Post.create(
@@ -25,9 +25,9 @@ Post.create(
   neighborhood: "mission",
   description: "text2",
   email: "foo10@bar.com",
-  expiration: Time.now + (2*7*24*60*60),
+  expiration: Time.current.utc.iso8601 + (2 * 7 * 24 * 60 * 60),
   validation: "199315f84baa405ac309f3efd774138a",
-  show: true,
+  show: true
 )
 
 Post.create(
@@ -39,9 +39,9 @@ Post.create(
   neighborhood: "tenderloin",
   description: "text3",
   email: "foo3@bar.com",
-  expiration: Time.now + (2*7*24*60*60),
+  expiration: Time.current.utc.iso8601 + (2 * 7 * 24 * 60 * 60),
   validation: "bd9484d18d699ecd1c3121cdcc50e773",
-  show: false,
+  show: false
 )
 
 Post.create(
@@ -53,7 +53,7 @@ Post.create(
   neighborhood: "South Berkeley",
   description: "text4",
   email: "foo4@bar.com",
-  expiration: Time.now - 1,
+  expiration: Time.current.utc.iso8601 - 1,
   validation: "7c745b58bd4e49d81f117ab738f451f4",
-  show: true,
+  show: true
 )

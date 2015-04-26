@@ -4,3 +4,7 @@
 require File.expand_path("../config/application", __FILE__)
 
 Rails.application.load_tasks
+
+Dir.glob(".rake/*.rb").each do |f|
+  import f
+end
