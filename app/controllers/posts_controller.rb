@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def new
+    @post = Post.new
   end
 
   def create
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
 
   def create_constructor(init_params)
     require "securerandom"
-    init_params[:expiration] = Time.current.utc.iso8601 + (24 * 60 * 60)
+    init_params[:expiration] = (Time.current.utc + 1.day).iso8601
     init_params[:validation] = SecureRandom.hex
     init_params
   end
