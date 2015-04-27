@@ -6,8 +6,30 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(create_constructor(post_params))
 
-    @post.save!
-    redirect_to success_url
+    if @post.save!
+      ConfirmationMailer.confirmation_email(@post.email, @post.validation).deliver_now
+
+     redirect_to success_url
+    end
+  end
+
+  def confirm
+    unless check_validation
+      redirect_to(error_validation_url) and return
+    end
+
+    post = Post.find_by_validation(params[:validation])
+
+    if post.nil?
+      redirect_to(error_validation_url) and return
+    end
+
+    post.update_attributes(
+      :show => true,
+      :expiration => Time.current.utc + 2.weeks
+    )
+
+    redirect_to confirm_success_url(:id => post.id)
   end
 
   def edit
@@ -28,7 +50,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def confirm_success
+    @post = Post.find(params[:id])
+    ConfirmationMailer.posted_email(@post).deliver_now
+  end
+
+  def delete
+  end
+
   private
+
+  def check_validation
+    params.has_key?(:validation) && params[:validation].match(/.{32}/)
+  end
 
   def post_params
     params.require(:post)
