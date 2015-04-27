@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
   get "search/index", to: "search#index"
 
-  resources :posts, only: [:new, :show, :create, :edit, :update, :delete, :confirm]
+  resources :posts
+
+  get "confirm", to: "posts#confirm"
 
   get "success", to: "posts#success"
 
-  get "confirm/success", to: "posts#confirm_success"
+  get "confirm_success", to: "posts#confirm_success"
+
+  get "destroy_success", to: "posts#destroy_success"
 
   get "error", to: "error"
 

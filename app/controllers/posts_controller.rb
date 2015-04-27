@@ -20,16 +20,14 @@ class PostsController < ApplicationController
 
     post = Post.find_by_validation(params[:validation])
 
-    if post.nil?
-      redirect_to(error_validation_url) and return
-    end
-
-    post.update_attributes(
-      :show => true,
-      :expiration => Time.current.utc + 2.weeks
-    )
+    toggle_show(post, true)
 
     redirect_to confirm_success_url(:id => post.id)
+  end
+
+  def confirm_success
+    @post = Post.find(params[:id])
+    ConfirmationMailer.posted_email(@post).deliver_now
   end
 
   def edit
@@ -41,6 +39,10 @@ class PostsController < ApplicationController
   end
 
   def update
+    unless check_validation
+      redirect_to(error_validation_url) and return
+    end
+
     @post = Post.find(params[:id])
 
     if @post.update_attributes(post_params)
@@ -50,18 +52,33 @@ class PostsController < ApplicationController
     end
   end
 
-  def confirm_success
-    @post = Post.find(params[:id])
-    ConfirmationMailer.posted_email(@post).deliver_now
-  end
+  def destroy
+    unless check_validation
+      redirect_to(error_validation_url) and return
+    end
 
-  def delete
-  end
+    post = Post.find_by_validation(params[:validation])
 
+    toggle_show(post, false)
+
+    redirect_to destroy_success_url(:id => post.id)
+  end
+      
   private
 
   def check_validation
     params.has_key?(:validation) && params[:validation].match(/.{32}/)
+  end
+
+  def toggle_show(post, show)
+    if post.nil?
+      redirect_to(error_validation_url) and return
+    end
+
+    post.update_attributes(
+      :show => show,
+      :expiration => Time.current.utc + 2.weeks
+    )
   end
 
   def post_params

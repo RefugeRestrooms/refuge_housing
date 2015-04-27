@@ -1,18 +1,19 @@
 class ConfirmationMailer < ApplicationMailer
   default from: "no-reply@refuge.lgbt"
 
-  def confirmation_email(email, validation)
-    @email = email
-    @validation = validation
-    @url = "#{confirmation_url}/?validation=#{validation}"
-    mail(to: email, subject: "Confirm Your Post on Refuge Housing")
+  def confirmation_email(post)
+    @email = post.email
+    @validation = post.validation
+    @url = "#{confirm_url(post)}/?validation=#{validation}"
+    mail(to: email, subject: "Refuge Housing: Confirm Your Post")
   end
 
-  def posted_email(@post)
-    @email = @post.email
-    @validation = @post.validation
-    @delete_url = "#{delete_url}/?validation=#{@validation}"
-    @edit_url = "#{edit_url}/?validation=#{@validation}"
-    @post_url = post_url(@post)
+  def posted_email(post)
+    @email = post.email
+    @validation = post.validation
+    @delete_url = "#{post_url(:destroy, post)}/?validation=#{@validation}"
+    @edit_url = "#{edit_post_url(post)}/?validation=#{@validation}"
+    @post_url = post_url(post)
+    mail(to: @email, subject: "Refuge Housing: Your Post is Confirmed")
   end
 end
