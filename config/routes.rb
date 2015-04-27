@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "search/index", to: "search#index"
 
-  resources :posts, only: [:new, :show, :create]
+  resources :posts, only: [:new, :show, :create, :edit, :update]
 
   get "success", to: "posts#success"
 end
