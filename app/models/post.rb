@@ -1,20 +1,25 @@
 # Base model for defining a post for housing
 class Post < ActiveRecord::Base
-  include PgSearch
-  pg_search_scope :search, against: {
-    title: "A",
-    street: "B",
-    city: "C",
-    state: "D",
-    neighborhood: "B",
-    description: "B",
-    country: "D"
-  },
+  POST_TYPES = ["Housing Needed", "Housing Free"]
 
-                           using: { tsearch: { dictionary: "english" } },
-                           ignoring: :accents
+  include PgSearch
+  pg_search_scope(
+    :search,
+    against: {
+      title: "A",
+      street: "B",
+      city: "C",
+      state: "D",
+      neighborhood: "B",
+      description: "B",
+      country: "D"
+    },
+    using: { tsearch: { dictionary: "english" } },
+    ignoring: :accents
+  )
 
   validates :title,
+            :post_type,
             :city,
             :state,
             :country,
@@ -29,8 +34,6 @@ class Post < ActiveRecord::Base
   after_validation :geocode
 
   def address
-    addr = [street, city, state, country].compact.join(", ")
-    addr = [addr, street].compact.join(", ") if street
-    addr
+    [street, city, state, country].compact.join(", ")
   end
 end

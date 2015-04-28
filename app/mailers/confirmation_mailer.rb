@@ -2,8 +2,8 @@ class ConfirmationMailer < ApplicationMailer
   default from: "no-reply@refuge.lgbt"
 
   def confirmation_email(post)
-    @email = post.email
-    @validation = post.validation
+    email = post.email
+    validation = post.validation
     @url = "#{confirm_url(post)}/?validation=#{validation}"
     mail(to: email, subject: "Refuge Housing: Confirm Your Post")
   end

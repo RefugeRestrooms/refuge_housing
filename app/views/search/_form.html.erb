@@ -1,4 +1,8 @@
 <%= form_tag(root_path, method: "get") do %>
-  <%= search_field_tag(:search, nil, placeholder: "Search Housing Posts") %>
+  <%= search_field_tag(:search, params["search"], placeholder: "Search Housing Posts") %>
   <%= submit_tag("Search") %>
+  <% Post::POST_TYPES.each do |p| %>
+    <%= label_tag(p, p) %>
+    <%= check_box_tag(p, true, params.include?(p)) %>
+  <% end %>
 <% end %>

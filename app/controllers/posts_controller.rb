@@ -6,23 +6,20 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(create_constructor(post_params))
 
-    if @post.save!
-      ConfirmationMailer.confirmation_email(@post.email, @post.validation).deliver_now
+    return unless @post.save!
 
-     redirect_to success_url
-    end
+    ConfirmationMailer.confirmation_email(@post).deliver_now
+    redirect_to success_url
   end
 
   def confirm
-    unless check_validation
-      redirect_to(error_validation_url) and return
-    end
+    redirect_to(error_validation_url) && return unless check_validation
 
     post = Post.find_by_validation(params[:validation])
 
     toggle_show(post, true)
 
-    redirect_to confirm_success_url(:id => post.id)
+    redirect_to confirm_success_url(id: post.id)
   end
 
   def confirm_success
@@ -39,9 +36,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    unless check_validation
-      redirect_to(error_validation_url) and return
-    end
+    redirect_to(error_validation_url) && return unless check_validation
 
     @post = Post.find(params[:id])
 
@@ -53,31 +48,27 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    unless check_validation
-      redirect_to(error_validation_url) and return
-    end
+    redirect_to(error_validation_url) && return unless check_validation
 
     post = Post.find_by_validation(params[:validation])
 
     toggle_show(post, false)
 
-    redirect_to destroy_success_url(:id => post.id)
+    redirect_to destroy_success_url(id: post.id)
   end
-      
+
   private
 
   def check_validation
-    params.has_key?(:validation) && params[:validation].match(/.{32}/)
+    params.key?(:validation) && params[:validation].match(/.{32}/)
   end
 
   def toggle_show(post, show)
-    if post.nil?
-      redirect_to(error_validation_url) and return
-    end
+    redirect_to(error_validation_url) && return if post.nil?
 
     post.update_attributes(
-      :show => show,
-      :expiration => Time.current.utc + 2.weeks
+      show: show,
+      expiration: Time.current.utc + 2.weeks
     )
   end
 
@@ -85,6 +76,7 @@ class PostsController < ApplicationController
     params.require(:post)
       .permit(
         :title,
+        :post_type,
         :email,
         :street,
         :city,

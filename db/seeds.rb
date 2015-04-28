@@ -4,6 +4,7 @@
 
 Post.create(
   title: "VanNess1",
+  post_type: "Housing Free",
   street: "1202 Van Ness Ave",
   city: "San Francisco",
   state: "CA",
@@ -18,6 +19,7 @@ Post.create(
 
 Post.create(
   title: "Mission1",
+  post_type: "Housing Free",
   street: "1201 Mission St.",
   city: "San Francisco",
   state: "CA",
@@ -32,6 +34,7 @@ Post.create(
 
 Post.create(
   title: "VanNess2",
+  post_type: "Housing Needed",
   street: "1200 Van Ness Ave",
   city: "San Francisco",
   state: "CA",
@@ -46,6 +49,7 @@ Post.create(
 
 Post.create(
   title: "Berkeley1",
+  post_type: "Housing Needed",
   street: "3350 Adeline St.",
   city: "Berkeley",
   state: "CA",

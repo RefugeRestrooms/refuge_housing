@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_150_425_232_707) do
+ActiveRecord::Schema.define(version: 20_150_428_032_507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,5 +31,6 @@ ActiveRecord::Schema.define(version: 20_150_425_232_707) do
     t.datetime "expiration"
     t.string "validation"
     t.boolean "show"
+    t.text "post_type"
   end
 end
