@@ -5,20 +5,16 @@
     font-size: 1.5em;
     text-decoration: underline;
   }
-  ul {
-    @include outer-container;
-    li {
-      @include span-columns(4);
-      display: inline-block;
-    }
-  }
 }
 
 .post {
+  @include span-columns(3);
+  text-align: center;
   background: $light-gray;
   padding: 2em;
   margin: 2em;
   border-radius: $base-border-radius;
+  display: inline-block;
 
   .description {
     font-style: italic;
@@ -38,3 +34,14 @@ form {
   }
 }
 
+.search_field {
+  display: inline;
+}
+
+.search_submit {
+  display: inline;
+}
+
+.check_box_container {
+  display: block;
+}
