@@ -1,11 +1,16 @@
 .posts {
-  @include span-columns(6);
-  @include shift(3);
-
+  @include outer-container;
   h1 {
     text-align: center;
     font-size: 1.5em;
     text-decoration: underline;
+  }
+  ul {
+    @include outer-container;
+    li {
+      @include span-columns(4);
+      display: inline-block;
+    }
   }
 }
 
@@ -19,3 +24,17 @@
     font-style: italic;
   }
 }
+
+form {
+  @include span-columns(4);
+  @include shift(4);
+
+  text-align: center;
+
+  input {
+    display: inline-block;
+    text-align: center;
+    margin: inherit auto;
+  }
+}
+

@@ -61,3 +61,49 @@ Post.create(
   validation: "7c745b58bd4e49d81f117ab738f451f4",
   show: true
 )
+
+Post.create(
+  title: "VanNess3",
+  post_type: "Housing Free",
+  street: "1203 Van Ness Ave",
+  city: "San Francisco",
+  state: "CA",
+  country: "USA",
+  neighborhood: "tenderloin",
+  description: "text1",
+  email: "foo1@bar.com",
+  expiration: Time.current.utc + 2.weeks,
+  validation: "5693b84deeb80a1587e72efd9b621bca",
+  show: true
+)
+
+Post.create(
+  title: "Embarcadero1",
+  post_type: "Housing Free",
+  street: "1 Embarcadero Center",
+  city: "San Francisco",
+  state: "CA",
+  country: "USA",
+  neighborhood: "Financial District",
+  description: "text1",
+  email: "foo1@bar.com",
+  expiration: Time.current.utc + 2.weeks,
+  validation: "23654821a2aaa1a02cf566a09799216e",
+  show: true
+)
+
+Post.create(
+  title: "Mission2",
+  post_type: "Housing Free",
+  street: "1000 Mission St",
+  city: "San Francisco",
+  state: "CA",
+  country: "USA",
+  neighborhood: "mission",
+  description: "text1",
+  email: "foo1@bar.com",
+  expiration: Time.current.utc - 1,
+  validation: "9937c7619c7f376e622a61704ad834c4",
+  show: false
+)
+
