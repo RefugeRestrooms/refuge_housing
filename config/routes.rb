@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :show, :create, :edit, :update]
 
   get "success", to: "posts#success"
+
+  mount SubdivisionSelect::Engine, at: 'subdivisions'
 end

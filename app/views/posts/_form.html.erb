@@ -20,13 +20,24 @@
   </p>
 
   <p>
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= f.label :country %><br>
+    <%=
+      f.country_select(
+        :country,
+        priority_countries: ["US"] # fuck imperialism but... convenience...
+      )
+    %>
   </p>
 
   <p>
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.label :state %><br>
+    <%=
+      f.subdivision_select(
+        :state,
+        "US",
+        include_blank: true
+      )
+    %>
   </p>
 
   <p>

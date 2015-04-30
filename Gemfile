@@ -14,6 +14,8 @@ gem "sass-rails", "~> 5.0.0"
 gem "bourbon", "~> 4.2.2"
 gem "neat", "~> 1.7.2"
 
+gem "subdivision_select"
+
 group :development, :test do
   gem "byebug"
   gem "rubocop", "~> 0.30.1"
