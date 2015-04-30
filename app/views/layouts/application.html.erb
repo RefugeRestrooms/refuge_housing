@@ -12,7 +12,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
     <header>
       <%=
         link_to(

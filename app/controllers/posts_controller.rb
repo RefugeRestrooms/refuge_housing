@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def new
+    @post = Post.new
   end
 
   def create
@@ -9,8 +10,22 @@ class PostsController < ApplicationController
     redirect_to success_url
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   def show
     @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update_attributes(post_params)
+      redirect_to @post
+    else
+      render action: "edit"
+    end
   end
 
   private
@@ -31,7 +46,7 @@ class PostsController < ApplicationController
 
   def create_constructor(init_params)
     require "securerandom"
-    init_params[:expiration] = Time.current.utc + 1.day
+    init_params[:expiration] = (Time.current.utc + 1.day).iso8601
     init_params[:validation] = SecureRandom.hex
     init_params
   end

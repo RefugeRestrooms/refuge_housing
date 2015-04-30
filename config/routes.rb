@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   root "search#index"
 
-  get "search/index", to: "search#index", as: "index"
+  get "search/index", to: "search#index"
 
-  get "posts/new", to: "posts#new", as: "new"
+  resources :posts, only: [:new, :show, :create, :edit, :update]
 
-  get "posts/:id", to: "posts#show", as: "posts"
+  get "success", to: "posts#success"
 
-  post "create", to: "posts#create", as: "create"
-
-  get "success", to: "posts#success", as: "success"
+  mount SubdivisionSelect::Engine, at: 'subdivisions'
 end
