@@ -1,6 +1,6 @@
 <%= form_for(@post) do |f| %>
   <p>
-    <%= f.select :post_type, Post::POST_TYPES  %>
+    <%= f.select :post_type, Post.post_types %>
   </p>
 
   <p>

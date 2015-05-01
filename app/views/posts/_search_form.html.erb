@@ -1,10 +1,13 @@
 <%= form_tag(root_path, method: "get") do %>
   <%= search_field_tag :search, params["search"], placeholder: "Search Housing Posts", class: "search_field" %>
-  <%= submit_tag "Search", class: "search_submit" %>
-  <div class="check_box_container">
-    <% Post::POST_TYPES.each do |p| %>
-      <%= label_tag p, p %>
-      <%= check_box_tag p, true, params.include?(p) %>
-    <% end %>
+
+  <div>
+    <%= label_tag :available_or_needed_needed, "Housing Needed" %>
+    <%= radio_button_tag :available_or_needed, :needed, params[:available_or_needed] == "needed" %>
+
+    <%= radio_button_tag :available_or_needed, :available, params[:available_or_needed] == "available" %>
+    <%= label_tag :available_or_needed_available, "Housing Available" %>
   </div>
+
+  <%= submit_tag "Search", class: "search_submit" %>
 <% end %>

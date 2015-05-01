@@ -1,6 +1,10 @@
 # Base model for defining a post for housing
 class Post < ActiveRecord::Base
-  POST_TYPES = ["Housing Needed", "Housing Free"]
+  enum post_type: { needed: 0, available: 1 }
+
+  scope :active, -> do
+    where(show: true).where("expiration >= ?", Time.current.utc)
+  end
 
   include PgSearch
   pg_search_scope(

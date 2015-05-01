@@ -2,9 +2,9 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup
 #
 
-Post.create(
+Post.create!(
   title: "VanNess1",
-  post_type: "Housing Free",
+  post_type: :available,
   street: "1202 Van Ness Ave",
   city: "San Francisco",
   state: "CA",
@@ -17,9 +17,9 @@ Post.create(
   show: true
 )
 
-Post.create(
+Post.create!(
   title: "Mission1",
-  post_type: "Housing Free",
+  post_type: :available,
   street: "1201 Mission St.",
   city: "San Francisco",
   state: "CA",
@@ -32,9 +32,9 @@ Post.create(
   show: true
 )
 
-Post.create(
+Post.create!(
   title: "VanNess2",
-  post_type: "Housing Needed",
+  post_type: :needed,
   street: "1200 Van Ness Ave",
   city: "San Francisco",
   state: "CA",
@@ -44,12 +44,12 @@ Post.create(
   email: "foo3@bar.com",
   expiration: Time.current.utc + 2.weeks,
   validation: "bd9484d18d699ecd1c3121cdcc50e773",
-  show: false
+  show: true
 )
 
-Post.create(
+Post.create!(
   title: "Berkeley1",
-  post_type: "Housing Needed",
+  post_type: :needed,
   street: "3350 Adeline St.",
   city: "Berkeley",
   state: "CA",
@@ -57,14 +57,14 @@ Post.create(
   neighborhood: "South Berkeley",
   description: "text4",
   email: "foo4@bar.com",
-  expiration: Time.current.utc - 1,
+  expiration: Time.current.utc + 2.weeks,
   validation: "7c745b58bd4e49d81f117ab738f451f4",
   show: true
 )
 
-Post.create(
+Post.create!(
   title: "VanNess3",
-  post_type: "Housing Free",
+  post_type: :available,
   street: "1203 Van Ness Ave",
   city: "San Francisco",
   state: "CA",
@@ -77,9 +77,9 @@ Post.create(
   show: true
 )
 
-Post.create(
+Post.create!(
   title: "Embarcadero1",
-  post_type: "Housing Free",
+  post_type: :available,
   street: "1 Embarcadero Center",
   city: "San Francisco",
   state: "CA",
@@ -92,9 +92,9 @@ Post.create(
   show: true
 )
 
-Post.create(
+Post.create!(
   title: "Mission2",
-  post_type: "Housing Free",
+  post_type: :available,
   street: "1000 Mission St",
   city: "San Francisco",
   state: "CA",
@@ -102,8 +102,8 @@ Post.create(
   neighborhood: "mission",
   description: "text1",
   email: "foo1@bar.com",
-  expiration: Time.current.utc - 1,
+  expiration: Time.current.utc + 2.weeks,
   validation: "9937c7619c7f376e622a61704ad834c4",
-  show: false
+  show: true
 )
 

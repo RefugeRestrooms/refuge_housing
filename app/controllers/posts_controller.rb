@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @post = post_search
+    @posts = post_search
   end
 
   def new
@@ -98,36 +98,20 @@ class PostsController < ApplicationController
     init_params
   end
 
-  def post_search
-    @posts = query_location
-    @posts = add_show_filter(@posts)
-    @posts = add_expiration_filter(@posts)
-    @posts = add_type_filter(@posts)
-  end
-
   def query_location
     if params[:search].present?
-      Post.near(params[:search])
+      Post.active.near(params[:search])
     else
-      Post.all
+      Post.active
     end
   end
 
-  def add_show_filter(posts)
-    posts.where("show = true")
-  end
-
-  def add_expiration_filter(posts)
-    posts.where("expiration >= '#{Time.current.utc}'")
-  end
-
-  def add_type_filter(posts)
-    filters = params.select { |k, _v| Post::POST_TYPES.include?(k) }
-    if filters.any?
-      filter = filters.keys.map { |k| "post_type = '#{k}'" }.join(" OR ")
-      posts.where(filter)
-    else
-      posts
+  def post_search
+    if params[:available_or_needed] == "available"
+      query_location.available
+    elsif params[:available_or_needed] == "needed"
+      query_location.needed
     end
   end
+
 end
