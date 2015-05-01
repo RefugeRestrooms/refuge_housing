@@ -107,10 +107,14 @@ class PostsController < ApplicationController
   end
 
   def post_search
+    posts = query_location
+
     if params[:available_or_needed] == "available"
-      query_location.available
+      posts.available
     elsif params[:available_or_needed] == "needed"
-      query_location.needed
+      posts.needed
+    else
+      posts
     end
   end
 
