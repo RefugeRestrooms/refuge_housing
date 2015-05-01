@@ -8,7 +8,7 @@
 
   ul li {
     @include span-columns(4);
-    @include omega(3);
+    @include omega(3n);
     padding: 2em;
     margin-top: 4em;
     background: $light-gray;
