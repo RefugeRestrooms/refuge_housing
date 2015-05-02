@@ -117,5 +117,4 @@ class PostsController < ApplicationController
       posts
     end
   end
-
 end

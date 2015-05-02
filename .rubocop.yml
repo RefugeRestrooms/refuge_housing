@@ -11,13 +11,17 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 20
 
+SingleSpaceBeforeFirstArg:
+    Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/Documentation:
   Description: Document classes and non-namespace modules.
   Enabled: false
-
+Style/Lambda:
+  Enabled: false
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 

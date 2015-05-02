@@ -106,4 +106,3 @@ Post.create!(
   validation: "9937c7619c7f376e622a61704ad834c4",
   show: true
 )
-

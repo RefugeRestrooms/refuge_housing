@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   get "error/validation", to: "error#validation"
 
-  mount SubdivisionSelect::Engine, at: 'subdivisions'
+  mount SubdivisionSelect::Engine, at: "subdivisions"
 end
