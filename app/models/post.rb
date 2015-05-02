@@ -1,20 +1,29 @@
 # Base model for defining a post for housing
 class Post < ActiveRecord::Base
-  include PgSearch
-  pg_search_scope :search, against: {
-    title: "A",
-    street: "B",
-    city: "C",
-    state: "D",
-    neighborhood: "B",
-    description: "B",
-    country: "D"
-  },
+  enum post_type: { needed: 0, available: 1 }
 
-                           using: { tsearch: { dictionary: "english" } },
-                           ignoring: :accents
+  scope :active, -> do
+    where(show: true).where("expiration >= ?", Time.current.utc)
+  end
+
+  include PgSearch
+  pg_search_scope(
+    :search,
+    against: {
+      title: "A",
+      street: "B",
+      city: "C",
+      state: "D",
+      neighborhood: "B",
+      description: "B",
+      country: "D"
+    },
+    using: { tsearch: { dictionary: "english" } },
+    ignoring: :accents
+  )
 
   validates :title,
+            :post_type,
             :city,
             :state,
             :country,
@@ -29,8 +38,6 @@ class Post < ActiveRecord::Base
   after_validation :geocode
 
   def address
-    addr = [street, city, state, country].compact.join(", ")
-    addr = [addr, street].compact.join(", ") if street
-    addr
+    [street, city, state, country].compact.join(", ")
   end
 end
