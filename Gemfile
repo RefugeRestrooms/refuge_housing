@@ -18,7 +18,13 @@ gem "subdivision_select"
 
 group :development, :test do
   gem "byebug"
-  gem "rubocop", "~> 0.30.1"
   gem "spring"
   gem "web-console", "~> 2.0"
+end
+
+group :test do
+  gem "capybara", "~> 2.4.4"
+  gem "factory_girl_rails", "~> 4.5.0"
+  gem "rspec-rails", "~> 3.2.1"
+  gem "rubocop", "~> 0.30.1"
 end

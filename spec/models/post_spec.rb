@@ -1,0 +1,27 @@
+require "rails_helper"
+
+describe Post, ".active" do
+  it "returns only active posts" do
+    active_post = create(:post, show: true)
+    # rubocop:disable UselessAssignment
+    non_active_post = create(:post)
+
+    result = Post.active
+
+    expect(result).to eq [active_post]
+  end
+end
+
+describe  Post, "#address" do
+  it "returns a full address with street" do
+    post = build(:post, street: "Adeline St.", city: "Berkeley", state: "CA", country: "USA")
+
+    expect(post.address).to eq "Adeline St., Berkeley, CA, USA"
+  end
+
+  it "returns a full address without street" do
+    post = build(:post, city: "Berkeley", state: "CA", country: "USA")
+
+    expect(post.address).to eq "Berkeley, CA, USA"
+  end
+end

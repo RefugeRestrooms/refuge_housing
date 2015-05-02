@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# from rake-fast zsh plugin
+.rake_tasks

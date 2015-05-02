@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
   get "destroy_success", to: "posts#destroy_success"
 
-  get "error", to: "error"
-
   get "error/validation", to: "error#validation"
 
   mount SubdivisionSelect::Engine, at: "subdivisions"
