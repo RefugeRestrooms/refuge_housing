@@ -94,7 +94,12 @@ class PostsController < ApplicationController
   def create_constructor(init_params)
     require "securerandom"
     init_params[:expiration] = (Time.current.utc + 1.day).iso8601
-    init_params[:validation] = SecureRandom.hex
+    # a collision here has low probability, but might as well check
+    loop do
+      init_params[:validation] = SecureRandom.hex
+      break if Post.find_by_validation(init_params[:validation]).nil?
+    end
+    init_params[:post_type] = params[:post_type].to_i
     init_params
   end
 

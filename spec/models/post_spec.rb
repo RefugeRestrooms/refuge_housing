@@ -1,27 +1,39 @@
 require "rails_helper"
 
-describe Post, ".active" do
-  it "returns only active posts" do
-    active_post = create(:post, show: true)
-    # rubocop:disable UselessAssignment
-    non_active_post = create(:post)
+describe Post do
+  describe ".active" do
+    it "returns only active posts" do
+      active_post = create(:post, show: true)
+      # rubocop:disable UselessAssignment
+      non_active_post = create(:post)
 
-    result = Post.active
+      result = Post.active
 
-    expect(result).to eq [active_post]
+      expect(result).to eq [active_post]
+    end
   end
-end
+ 
+  describe ".near" do
+    it "returns a post nearby" do
+      post = create(:post, city: "Berkeley", state: "CA", show: true)
 
-describe  Post, "#address" do
-  it "returns a full address with street" do
-    post = build(:post, street: "Adeline St.", city: "Berkeley", state: "CA", country: "USA")
+      result = Post.near("Berkeley, CA")
 
-    expect(post.address).to eq "Adeline St., Berkeley, CA, USA"
+      expect(result).to eq [post]
+    end
   end
 
-  it "returns a full address without street" do
-    post = build(:post, city: "Berkeley", state: "CA", country: "USA")
+  describe "#address" do
+    it "returns a full address with street" do
+      post = build(:post, street: "Adeline St.", city: "Berkeley", state: "CA", country: "USA")
 
-    expect(post.address).to eq "Berkeley, CA, USA"
+      expect(post.address).to eq "Adeline St., Berkeley, CA, USA"
+    end
+
+    it "returns a full address without street" do
+      post = build(:post, city: "Berkeley", state: "CA", country: "USA")
+
+      expect(post.address).to eq "Berkeley, CA, USA"
+    end
   end
 end
