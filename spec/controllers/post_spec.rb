@@ -21,14 +21,14 @@ describe PostsController, type: :controller do
       expect(assigns(:posts)).to match_array([post1, post2])
     end
   end
+  
 
-  describe "GET #new" do
-    it "" do
-    end
-  end
-
-  describe "GET #create" do
+  describe "GET #create" do 
     it "creates a post" do
+      post = build(:post)
+      get :create, post: attributes_for(:post)
+
+      expect(Post.all.first.title).to eq(post.title)
     end
   end
 
@@ -44,16 +44,15 @@ describe PostsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "removes a post from search" do
-      post1 = create(
+      post = create(
         :post,
         id: 1,
-        validation: "7c745b58bd4e49d81f117ab738f451f4",
+        validation: "0f21473d03145662d38ce4ea1ebac790",
         show: true
       )
-      post2 = create(:post, show: true)
-      delete :destroy, id: post1.id, validation: post2.validation
+      delete :destroy, id: post.id, validation: post.validation
 
-      expect(Post.active).to match_array([post2])
+      expect(Post.active).to be_empty
     end
   end
 end

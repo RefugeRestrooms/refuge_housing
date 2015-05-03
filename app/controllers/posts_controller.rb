@@ -101,7 +101,7 @@ class PostsController < ApplicationController
     # a collision here has low probability, but might as well check
     loop do
       validation = SecureRandom.hex
-      return validation if Post.find_by_validation(init_params[:validation]).nil?
+      return validation if Post.find_by_validation(validation).nil?
     end
   end
 
