@@ -38,7 +38,7 @@ class Post < ActiveRecord::Base
   after_validation :geocode
 
   def toggle_show(show)
-    self.update_attributes(
+    update_attributes(
       show: show,
       expiration: Time.current.utc + 2.weeks
     )

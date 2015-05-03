@@ -74,7 +74,6 @@ class PostsController < ApplicationController
     params.key?(:id) && params.key?(:validation) && params[:validation].match(/^.{32}$/)
   end
 
-
   def post_params
     params.require(:post)
       .permit(
