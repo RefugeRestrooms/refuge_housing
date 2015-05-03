@@ -7,13 +7,11 @@ Rails.application.routes.draw do
 
   get "confirm", to: "posts#confirm"
 
+  get "delete", to: "posts#delete"
+
   get "success", to: "posts#success"
 
-  get "confirm_success", to: "posts#confirm_success"
-
-  get "destroy_success", to: "posts#destroy_success"
-
-  get "error/validation", to: "error#validation"
+  get "validation_error", to: "posts#validation_error"
 
   mount SubdivisionSelect::Engine, at: "subdivisions"
 end

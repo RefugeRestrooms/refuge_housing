@@ -12,7 +12,7 @@ describe Post do
       expect(result).to eq [active_post]
     end
   end
- 
+
   describe ".near" do
     it "returns a post nearby" do
       post = create(:post, city: "Berkeley", state: "CA", show: true)

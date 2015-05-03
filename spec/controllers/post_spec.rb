@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe PostsController, :type => :controller do
+describe PostsController, type: :controller do
   describe "GET #index" do
     it "responds successfully with an HTTP 200 status code" do
       get :index
@@ -19,6 +19,31 @@ describe PostsController, :type => :controller do
       get :index
 
       expect(assigns(:posts)).to match_array([post1, post2])
+    end
+  end
+
+  describe "GET #confirm" do
+    it "activates a post" do
+      post = create(:post)
+      post_active = create(:post, show: true)
+      get :confirm, validation: post.validation
+
+      expect(Post.active).to match_array([post_active])
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "removes a post from search" do
+      post1 = create(
+        :post,
+        id: 1,
+        validation: "7c745b58bd4e49d81f117ab738f451f4",
+        show: true
+      )
+      post2 = create(:post, show: true)
+      delete :destroy, id: post1.id, validation: post2.validation
+
+      expect(Post.active).to match_array([post2])
     end
   end
 end

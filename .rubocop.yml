@@ -4,6 +4,8 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "bin/**/*"
+Metrics/ClassLength:
+  Enabled: false
 
 Metrics/LineLength:
   Max: 120
