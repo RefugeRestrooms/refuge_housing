@@ -25,10 +25,10 @@ describe PostsController, type: :controller do
 
   describe "GET #create" do 
     it "creates a post" do
-      post = build(:post)
-      get :create, post: attributes_for(:post)
+      post1 = build(:post)
+      post :create, post: attributes_for(:post)
 
-      expect(Post.all.first.title).to eq(post.title)
+      expect(Post.all.first.title).to eq(post1.title)
     end
   end
 
