@@ -16,7 +16,16 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require "capybara/rspec"
 require "factory_girl_rails"
+# include all support matchers
+Dir[File.expand_path(
+  File.join(
+    File.dirname(__FILE__),
+    "support",
+    "**",
+    "*.rb")
+)].each { |f| require f }
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

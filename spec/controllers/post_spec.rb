@@ -21,9 +21,8 @@ describe PostsController, type: :controller do
       expect(assigns(:posts)).to match_array([post1, post2])
     end
   end
-  
 
-  describe "GET #create" do 
+  describe "GET #create" do
     it "creates a post" do
       post1 = build(:post)
       post :create, post: attributes_for(:post)
