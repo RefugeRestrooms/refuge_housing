@@ -17,6 +17,8 @@ class PostsController < ApplicationController
   end
 
   def edit
+    redirect_to(validation_error_url) && return unless check_validation
+
     @post = Post.find(params[:id])
   end
 
@@ -90,7 +92,6 @@ class PostsController < ApplicationController
   end
 
   def create_constructor(init_params)
-    require "securerandom"
     init_params[:expiration] = (Time.current.utc + 1.day).iso8601
     init_params[:post_type] = params[:post_type].to_i
     init_params[:validation] = generate_validation
@@ -98,6 +99,7 @@ class PostsController < ApplicationController
   end
 
   def generate_validation
+    require "securerandom"
     # a collision here has low probability, but might as well check
     loop do
       validation = SecureRandom.hex
