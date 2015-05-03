@@ -21,6 +21,18 @@ describe PostsController, type: :controller do
       expect(assigns(:posts)).to match_array([post1, post2])
     end
   end
+  
+  describe "GET #new" do
+    it "" do
+
+    end
+  end
+
+  describe "GET #create" do 
+    it "creates a post" do
+
+    end
+  end
 
   describe "GET #confirm" do
     it "activates a post" do

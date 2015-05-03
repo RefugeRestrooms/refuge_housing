@@ -40,11 +40,11 @@ class PostsController < ApplicationController
     redirect_to(validation_error_url) && return unless check_validation
 
     post = Post.find_by_validation(params[:validation])
+    redirect_to(validation_error_url) && return if post.nil?
 
-    toggle_show(post, false)
+    post.toggle_show(false)
 
-    @post = Post.find(params[:id])
-    ConfirmationMailer.deleted_email(@post)
+    ConfirmationMailer.deleted_email(post).deliver_now
 
     flash[:notice] = "Post successfully deleted"
   end
@@ -53,14 +53,14 @@ class PostsController < ApplicationController
     redirect_to(validation_error_url) && return unless check_validation
 
     post = Post.find_by_validation(params[:validation])
+    redirect_to(validation_error_url) && return if post.nil?
 
-    toggle_show(post, true)
+    post.toggle_show(true)
 
-    @post = Post.find(params[:id])
-    ConfirmationMailer.posted_email(@post).deliver_now
+    ConfirmationMailer.posted_email(post).deliver_now
   end
 
-  # Get wrapper/confirmation for destray
+  # Get wrapper/confirmation for destroy
   def delete
     redirect_to(validation_error_url) && return unless check_validation
   end
@@ -74,14 +74,6 @@ class PostsController < ApplicationController
     params.key?(:id) && params.key?(:validation) && params[:validation].match(/^.{32}$/)
   end
 
-  def toggle_show(post, show)
-    redirect_to(validation_error_url) && return if post.nil?
-
-    post.update_attributes(
-      show: show,
-      expiration: Time.current.utc + 2.weeks
-    )
-  end
 
   def post_params
     params.require(:post)
