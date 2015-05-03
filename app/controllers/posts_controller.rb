@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     return unless @post.save!
 
     ConfirmationMailer.confirmation_email(@post).deliver_now
-    redirect_to success_url
+    redirect_to posts_success_url
   end
 
   def edit
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    redirect_to(error_url) && return unless check_validation
+    redirect_to(validation_error_url) && return unless check_validation
 
     post = Post.find_by_validation(params[:validation])
 
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     ConfirmationMailer.posted_email(@post).deliver_now
   end
 
-  # Get wrapper/confirmation for destroy
+  # Get wrapper/confirmation for destray
   def delete
     redirect_to(validation_error_url) && return unless check_validation
   end

@@ -2,7 +2,7 @@ class ConfirmationMailer < ApplicationMailer
   default from: "no-reply@refuge.lgbt"
 
   def confirmation_email(post)
-    @url = "#{confirm_post_url(post)}/?validation=#{post.validation}&id=#{post.id}"
+    @url = "#{posts_confirm_url(post)}/?validation=#{post.validation}&id=#{post.id}"
     mail(to: post.email, subject: "Refuge Housing: Confirm Your Post")
   end
 
@@ -16,7 +16,7 @@ class ConfirmationMailer < ApplicationMailer
   end
 
   def deleted_email(post)
-    @url = "#{confirm_post_url(post)}/?validation=#{post.validation}&id=#{post.id}"
+    @url = "#{posts_confirm_url(post)}/?validation=#{post.validation}&id=#{post.id}"
     mail(to: post.email, subject: "Refuge Housing: Your Post Has Been Deleted")
   end
 end
