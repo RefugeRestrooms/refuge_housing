@@ -1,0 +1,4 @@
+<p class="confirmation_text">
+Are you sure you want to delete your post?
+</p>
+<%= button_to 'Delete', post_path(id: params[:id], validation: params[:validation]), method: :delete %>

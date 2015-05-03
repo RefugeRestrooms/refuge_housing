@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Your post on <%= Rails.application.class.parent_name %> has been deleted.
+    <p>
+      To repost, just follow this link: <%= @url %>
+    </p>
+    <p>Thanks for using <%= Rails.application.class.parent_name %>!</p>
+  </body>
+</html>

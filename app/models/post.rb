@@ -37,6 +37,13 @@ class Post < ActiveRecord::Base
 
   after_validation :geocode
 
+  def toggle_show(show)
+    update_attributes(
+      show: show,
+      expiration: Time.current.utc + 2.weeks
+    )
+  end
+
   def address
     [street, city, state, country].compact.join(", ")
   end

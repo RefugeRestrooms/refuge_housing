@@ -13,25 +13,12 @@ class PostsController < ApplicationController
     return unless @post.save!
 
     ConfirmationMailer.confirmation_email(@post).deliver_now
-    redirect_to success_url
-  end
-
-  def confirm
-    redirect_to(error_validation_url) && return unless check_validation
-
-    post = Post.find_by_validation(params[:validation])
-
-    toggle_show(post, true)
-
-    redirect_to confirm_success_url(id: post.id)
-  end
-
-  def confirm_success
-    @post = Post.find(params[:id])
-    ConfirmationMailer.posted_email(@post).deliver_now
+    redirect_to posts_success_url
   end
 
   def edit
+    redirect_to(validation_error_url) && return unless check_validation
+
     @post = Post.find(params[:id])
   end
 
@@ -40,7 +27,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    redirect_to(error_validation_url) && return unless check_validation
+    redirect_to(validation_error_url) && return unless check_validation
 
     @post = Post.find(params[:id])
 
@@ -52,28 +39,41 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    redirect_to(error_validation_url) && return unless check_validation
+    redirect_to(validation_error_url) && return unless check_validation
 
     post = Post.find_by_validation(params[:validation])
+    redirect_to(validation_error_url) && return if post.nil?
 
-    toggle_show(post, false)
+    post.toggle_show(false)
 
-    redirect_to destroy_success_url(id: post.id)
+    ConfirmationMailer.deleted_email(post).deliver_now
+
+    flash[:notice] = "Post successfully deleted"
+  end
+
+  def confirm
+    redirect_to(validation_error_url) && return unless check_validation
+
+    post = Post.find_by_validation(params[:validation])
+    redirect_to(validation_error_url) && return if post.nil?
+
+    post.toggle_show(true)
+
+    ConfirmationMailer.posted_email(post).deliver_now
+  end
+
+  # Get wrapper/confirmation for destroy
+  def delete
+    redirect_to(validation_error_url) && return unless check_validation
+  end
+
+  def validation_error
   end
 
   private
 
   def check_validation
-    params.key?(:validation) && params[:validation].match(/.{32}/)
-  end
-
-  def toggle_show(post, show)
-    redirect_to(error_validation_url) && return if post.nil?
-
-    post.update_attributes(
-      show: show,
-      expiration: Time.current.utc + 2.weeks
-    )
+    params.key?(:id) && params.key?(:validation) && params[:validation].match(/^.{32}$/)
   end
 
   def post_params
@@ -92,10 +92,19 @@ class PostsController < ApplicationController
   end
 
   def create_constructor(init_params)
-    require "securerandom"
     init_params[:expiration] = (Time.current.utc + 1.day).iso8601
-    init_params[:validation] = SecureRandom.hex
+    init_params[:post_type] = params[:post_type].to_i
+    init_params[:validation] = generate_validation
     init_params
+  end
+
+  def generate_validation
+    require "securerandom"
+    # a collision here has low probability, but might as well check
+    loop do
+      validation = SecureRandom.hex
+      return validation if Post.find_by_validation(validation).nil?
+    end
   end
 
   def query_location
@@ -117,5 +126,4 @@ class PostsController < ApplicationController
       posts
     end
   end
-
 end
