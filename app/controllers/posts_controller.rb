@@ -29,9 +29,9 @@ class PostsController < ApplicationController
   def update
     redirect_to(validation_error_url) && return unless check_validation
 
-    @post = Post.find(params[:id])
+    @post = Post.find_by_validation(params[:validation])
 
-    if @post.update_attributes(post_params)
+    if @post.update_attributes(post_params.merge(post_type: post_params[:post_type].to_i))
       redirect_to @post
     else
       render action: "edit"
@@ -64,7 +64,7 @@ class PostsController < ApplicationController
 
   # Get wrapper/confirmation for destroy
   def delete
-    redirect_to(validation_error_url) && return unless check_validation
+    redirect_to(validation_error_url) && return unless check_validation && params.key?(:id)
   end
 
   def validation_error
@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   private
 
   def check_validation
-    params.key?(:id) && params.key?(:validation) && params[:validation].match(/^.{32}$/)
+    params.key?(:validation) && params[:validation].match(/^.{32}$/)
   end
 
   def post_params

@@ -24,20 +24,24 @@ describe PostsController, type: :controller do
 
   describe "GET #create" do
     it "creates a post" do
-      post1 = build(:post)
       post :create, post: attributes_for(:post)
 
-      expect(Post.all.first.title).to eq(post1.title)
+      expect(Post.all.first.title).to eq(attributes_for(:post)[:title])
+    end
+
+    it "does not activate a created post" do
+      post :create, post: attributes_for(:post)
+
+      expect(Post.active).to match_array([])
     end
   end
 
   describe "GET #confirm" do
     it "activates a post" do
       post = create(:post)
-      post_active = create(:post, show: true)
       get :confirm, validation: post.validation
 
-      expect(Post.active).to match_array([post_active])
+      expect(Post.active).to match_array([post])
     end
   end
 
