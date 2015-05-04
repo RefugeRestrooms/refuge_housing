@@ -1,5 +1,12 @@
-<p>Your post has been confirmed!</p>
-<p>We've sent you an email with more info</p>
-<p>View your post <%= link_to("here", @post) %> <p>
-<%= link_to "Back", root_path %>
+<p class="confirmation_text">
+  Your post has been confirmed!
+</p>
+<p class="confirmation_text">
+  We've sent you an email with more info
+</p>
+<p class="confirmation_text">
+  View your post <%= link_to("here", @post) %>
+</p>
+<p class="confirmation_text">
+  <%= link_to "Back to Home Page", root_path %>
 </p>

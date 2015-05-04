@@ -3,7 +3,7 @@ FactoryGirl.define do
     title "Need couch in Berkeley"
     post_type :needed
     city "Berkeley"
-    state "CA"
+    state "California"
     country "USA"
     description "Need couch in Berkeley for two weeks"
     email "foo@bar.com"

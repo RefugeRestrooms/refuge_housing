@@ -1,4 +1,5 @@
-<%= form_for(@post) do |f| %>
+<% url = post_path(:id => params[:id], validation: params[:validation]) if params[:validation] %>
+<%= form_for(@post, url: url) do |f| %>
   <p>
     <%= f.select :post_type, Post.post_types %>
   </p>
