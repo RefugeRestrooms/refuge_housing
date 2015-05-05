@@ -62,7 +62,7 @@ describe "the edit process" do
     select "California", from: "State"
     click_button "Update Post"
 
-    current_path.should eq(post_path(post))
+    expect(current_path).to eq(post_path(post))
     expect(page).to have_content("Edited Title")
   end
 end
