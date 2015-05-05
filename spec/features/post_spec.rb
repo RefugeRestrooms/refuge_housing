@@ -1,11 +1,28 @@
 require "rails_helper"
 
 describe "the search process", type: :feature do
-  it "shows a post nearby when I search" do
-    post = create(:post, city: "Berkeley", state: "California", show: true)
+  it "shows a NEEDED post nearby when I search" do
+    post = create(
+      :post,
+      show: true
+    )
 
     visit root_url
-    fill_in "search", with: "Berkeley, California"
+    fill_in "query", with: "Berkeley, California"
+    choose "Needed"
+    click_button "Search"
+
+    expect(page).to have_content post.title
+  end
+
+  it "shows an AVAILABLE post nearby when I search" do
+    post = create(
+      :available_post,
+      show: true
+    )
+
+    visit root_url
+    fill_in "query", with: "Berkeley, California"
     click_button "Search"
 
     expect(page).to have_content post.title

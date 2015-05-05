@@ -1,6 +1,15 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.active
+
+    if params[:query].present?
+      redirect_to search_path(params[:available_or_needed], params[:query])
+    end
+  end
+
+  def search
     @posts = post_search
+    render "index"
   end
 
   def new
@@ -108,8 +117,8 @@ class PostsController < ApplicationController
   end
 
   def query_location
-    if params[:search].present?
-      Post.active.near(params[:search])
+    if params[:query].present?
+      Post.active.near(params[:query])
     else
       Post.active
     end
