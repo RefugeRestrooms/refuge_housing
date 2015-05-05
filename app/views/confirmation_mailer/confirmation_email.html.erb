@@ -5,8 +5,8 @@
   </head>
   <body>
     <p>
-      To confirm your post, just follow this link: <%= @url %>
+      To confirm your post, just follow this link: <%= confirm_post_link(@post) %>
     </p>
-    <p>Thanks for posting on <%= Rails.application.class.parent_name %>!</p>
+    <p>Thanks for posting on <%= app_name %>!</p>
   </body>
 </html>

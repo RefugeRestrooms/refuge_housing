@@ -5,10 +5,10 @@
   </head>
   <body>
     <p>Your post is confirmed!</p>
-    <p>To view your post, visit: <%= @post_url %></p>
-    <p>To edit your post, visit: <%= @edit_url %></p>
-    <p>To delete your post, visit: <%= @delete_url %></p>
-    <p>Your post will expire in two weeks</p>
-    <p>Thanks for posting on <%= @app_name %>!</p>
+    <p>To view your post, visit: <%= post_link(@post) %></p>
+    <p>To edit your post, visit: <%= edit_post_link(@post) %></p>
+    <p>To delete your post, visit: <%= delete_post_link(@post) %></p>
+    <p>Your post will expire in two weeks, on <%= @post.expiration.strftime("%B %d, %Y") %>. </p>
+    <p>Thanks for posting on <%= app_name %>!</p>
   </body>
 </html>

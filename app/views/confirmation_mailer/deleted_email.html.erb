@@ -5,10 +5,10 @@
   </head>
   <body>
     <p>
-      Your post on <%= Rails.application.class.parent_name %> has been deleted.
+      Your post on <%= app_name %> has been deleted.
     <p>
-      To repost, just follow this link: <%= @url %>
+      To repost, just follow this link: <%= confirm_post_link(@post) %>
     </p>
-    <p>Thanks for using <%= Rails.application.class.parent_name %>!</p>
+    <p>Thanks for using <%= app_name %>!</p>
   </body>
 </html>
