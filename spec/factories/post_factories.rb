@@ -3,8 +3,8 @@ FactoryGirl.define do
     title "Need couch in Berkeley"
     post_type :needed
     city "Berkeley"
-    state "California"
-    country "USA"
+    state "CA"
+    country "US"
     description "Need couch in Berkeley for two weeks"
     email "foo@bar.com"
     expiration { Time.current.utc + 2.weeks }

@@ -1,5 +1,8 @@
 # Base model for defining a post for housing
 class Post < ActiveRecord::Base
+  include ActiveModel::Validations
+  validates_with CountryAndStateValidator
+
   enum post_type: { needed: 0, available: 1 }
 
   scope :active, -> do
@@ -24,7 +27,6 @@ class Post < ActiveRecord::Base
   validates :title,
             :post_type,
             :city,
-            :state,
             :country,
             :email,
             :expiration,
