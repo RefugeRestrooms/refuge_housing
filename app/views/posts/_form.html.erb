@@ -39,7 +39,7 @@
     <%=
       f.subdivision_select(
         :state,
-        "US",
+        f.object.country || "US",
         include_blank: true
       )
     %>
