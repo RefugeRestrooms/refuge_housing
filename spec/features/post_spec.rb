@@ -8,7 +8,7 @@ describe "the search process", type: :feature do
     )
 
     visit root_url
-    fill_in "query", with: "Berkeley, California"
+    fill_in "query", with: "Berkeley"
     choose "Needed"
     click_button "Search"
 
@@ -22,7 +22,7 @@ describe "the search process", type: :feature do
     )
 
     visit root_url
-    fill_in "query", with: "Berkeley, California"
+    fill_in "query", with: "Berkeley"
     click_button "Search"
 
     expect(page).to have_content post.title
