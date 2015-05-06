@@ -118,7 +118,7 @@ class PostsController < ApplicationController
 
   def query_location
     if params[:query].present?
-      Post.active.near(params[:query])
+      Post.active.search(params[:query])
     else
       Post.active
     end
