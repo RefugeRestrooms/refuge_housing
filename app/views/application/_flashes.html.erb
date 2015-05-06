@@ -1,0 +1,3 @@
+<% [:alert, :error, :notice, :success].each do |type| %>
+  <%= content_tag("p", flash[type], class: "flash-#{type}") if flash[type].present? %>
+<% end %>
