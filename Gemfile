@@ -16,6 +16,9 @@ gem "neat", "~> 1.7.2"
 
 gem "subdivision_select"
 
+gem "activeadmin", "~> 1.0.0.pre1"
+gem "devise" # for ActiveAdmin only
+
 group :development, :test do
   gem "byebug"
   gem "spring"
