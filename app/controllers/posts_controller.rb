@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.active
 
-    if params[:query].present?
+    if params[:available_or_needed].present?
       redirect_to search_path(params[:available_or_needed], params[:query])
     end
   end
