@@ -18,8 +18,7 @@ class Post < ActiveRecord::Base
       description: "B",
       country: "D"
     },
-    using: { tsearch: { dictionary: "english" } },
-    ignoring: :accents
+    using: { tsearch: { dictionary: "english" } }
   )
 
   validates :title,
