@@ -1,12 +1,12 @@
 class CountryAndStateValidator < ActiveModel::Validator
   def validate(record)
     unless country_is_valid(record.country)
-      record.errors[:country] <<  "Country is not valid"
+      record.errors[:country] << "Country is not valid"
       return false
     end
 
     unless state_is_valid(record.country, record.state)
-      record.errors[:state] <<  "State is not valid"
+      record.errors[:state] << "State is not valid"
       return false
     end
   end
@@ -22,7 +22,6 @@ class CountryAndStateValidator < ActiveModel::Validator
   # - has a valid subdivision for the country
   def state_is_valid(country, state)
     Country[country].subdivisions.blank? ||
-    Country[country].subdivisions[state].present?
+      Country[country].subdivisions[state].present?
   end
-
 end
