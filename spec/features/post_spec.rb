@@ -38,7 +38,7 @@ describe "the post submission process" do
     expect(page).to have_content("confirmation")
   end
 
-  it "validates blank fields" do
+  it "invalidates blank fields" do
     visit new_post_url
     click_button "Create Post"
 
@@ -92,7 +92,6 @@ describe "the edit process" do
 
     visit edit_post_url(id: post.id, validation: post.validation)
     fill_in "Title", with: "Edited Title"
-    fill_in "Email confirmation", with: "foo@bar.com"
     # gelocator stores with state abbreviation # so form doesn't get autofilled
     select "California", from: "State"
     click_button "Update Post"

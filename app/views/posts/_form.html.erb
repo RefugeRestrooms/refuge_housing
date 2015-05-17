@@ -15,10 +15,12 @@
     <%= f.text_field :email %>
   </p>
 
+  <% unless request.original_url.include?("edit") %>
   <p>
     <%= f.label :email_confirmation %>
     <%= f.text_field :email_confirmation %>
   </p>
+  <% end %>
 
   <p>
     <%= f.label :street %><br>

@@ -68,7 +68,6 @@ class PostsController < ApplicationController
     redirect_to(validation_error_url) && return if post.nil?
 
     post.toggle_show(true)
-
     ConfirmationMailer.posted_email(post).deliver_now
   end
 

@@ -23,6 +23,32 @@ describe Post do
     end
   end
 
+  describe ".toggle_show" do
+    it "toggles nil to true" do
+      post = create(:post)
+
+      post.toggle_show(true)
+
+      expect(post.show).to eq true
+    end
+
+    it "toggles true to false" do
+      post = create(:post, show: true)
+
+      post.toggle_show(false)
+
+      expect(post.show).to eq false
+    end
+
+    it "toggles false to true" do
+      post = create(:post, show: false)
+
+      post.toggle_show(true)
+
+      expect(post.show).to eq true
+    end
+  end
+
   describe "#address" do
     it "returns a full address with street" do
       post = build(:post, street: "Adeline St.", city: "Berkeley", state: "CA", country: "USA")

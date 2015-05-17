@@ -43,6 +43,28 @@ describe PostsController, type: :controller do
 
       expect(Post.active).to match_array([post])
     end
+
+    it "redirects to error page when invalid" do
+      # rubocop:disable UselessAssignment
+      post = create(
+        :post,
+        id: 1,
+        validation: "0f21473d03145662d38ce4ea1ebac790"
+      )
+      get :confirm, validation: "0f21473d03145662d38ce4ea1ebac791"
+
+      expect(response).to redirect_to validation_error_url
+      # rubocop:enable UselessAssignment
+    end
+
+    it "redirects to error page without validation" do
+      # rubocop:disable UselessAssignment
+      post = create(:post)
+      get :confirm
+
+      expect(response).to redirect_to validation_error_url
+      # rubocop:enable UselessAssignment
+    end
   end
 
   describe "DELETE #destroy" do
@@ -58,7 +80,7 @@ describe PostsController, type: :controller do
       expect(Post.active).to be_empty
     end
 
-    it "redirect to error page when invalid" do
+    it "redirects to error page when invalid" do
       post = create(
         :post,
         id: 1,
@@ -66,6 +88,13 @@ describe PostsController, type: :controller do
         show: true
       )
       delete :destroy, id: post.id, validation: "0f21473d03145662d38ce4ea1ebac791"
+
+      expect(response).to redirect_to validation_error_url
+    end
+
+    it "redirects to error page without validation" do
+      post = create(:post)
+      get :destroy, id: post.id
 
       expect(response).to redirect_to validation_error_url
     end

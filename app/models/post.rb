@@ -13,6 +13,7 @@ class Post < ActiveRecord::Base
             confirmation: true,
             presence: true
   validates :email_confirmation,
+            on: :create,
             presence: true
 
   enum post_type: { needed: 0, available: 1 }
