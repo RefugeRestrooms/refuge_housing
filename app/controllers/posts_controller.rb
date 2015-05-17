@@ -19,10 +19,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(create_constructor(post_params))
 
-    return unless @post.save!
-
-    ConfirmationMailer.confirmation_email(@post).deliver_now
-    redirect_to posts_success_url
+    if @post.save
+      ConfirmationMailer.confirmation_email(@post).deliver_now
+      redirect_to posts_success_url
+    else
+      render action: "new"
+    end
   end
 
   def edit
@@ -91,6 +93,7 @@ class PostsController < ApplicationController
         :title,
         :post_type,
         :email,
+        :email_confirmation,
         :street,
         :city,
         :state,

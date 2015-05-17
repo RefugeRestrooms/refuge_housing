@@ -7,6 +7,7 @@ FactoryGirl.define do
     country "US"
     description "Need couch in Berkeley for two weeks"
     email "foo@bar.com"
+    email_confirmation "foo@bar.com"
     expiration { Time.current.utc + 2.weeks }
     validation "7c745b58bd4e49d81f117ab738f451f4"
 

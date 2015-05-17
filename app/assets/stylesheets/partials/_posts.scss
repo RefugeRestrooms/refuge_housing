@@ -26,6 +26,7 @@ form {
   @include shift(4);
 
   text-align: center;
+  text-transform: capitalize;
 
   input {
     display: inline-block;

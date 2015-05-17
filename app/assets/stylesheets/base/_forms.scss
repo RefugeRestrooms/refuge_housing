@@ -79,3 +79,8 @@ select {
   margin-top: $small-spacing;
   width: 100%
 }
+
+.form_error {
+  color: red;
+  font-weight: bold;
+}

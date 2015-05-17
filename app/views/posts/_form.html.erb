@@ -1,5 +1,6 @@
 <% url = post_path(:id => params[:id], validation: params[:validation]) if params[:validation] %>
 <%= form_for(@post, url: url) do |f| %>
+  <%= render "posts/form_error", :target => @post %>
   <p>
     <%= f.select :post_type, Post.post_types %>
   </p>
@@ -12,6 +13,11 @@
   <p>
     <%= f.label :email %><br>
     <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :email_confirmation %>
+    <%= f.text_field :email_confirmation %>
   </p>
 
   <p>

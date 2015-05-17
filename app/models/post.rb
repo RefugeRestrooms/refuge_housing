@@ -2,6 +2,18 @@
 class Post < ActiveRecord::Base
   include ActiveModel::Validations
   validates_with CountryAndStateValidator
+  validates :title,
+            :post_type,
+            :city,
+            :country,
+            :expiration,
+            :validation,
+            presence: true
+  validates :email,
+            confirmation: true,
+            presence: true
+  validates :email_confirmation,
+            presence: true
 
   enum post_type: { needed: 0, available: 1 }
 
@@ -23,15 +35,6 @@ class Post < ActiveRecord::Base
     },
     using: { tsearch: { dictionary: "english" } }
   )
-
-  validates :title,
-            :post_type,
-            :city,
-            :country,
-            :email,
-            :expiration,
-            :validation,
-            presence: true
 
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
