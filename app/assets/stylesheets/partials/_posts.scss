@@ -35,12 +35,24 @@ form {
   }
 }
 
+.search_form {
+  @include span-columns(6);
+  margin-left: 0;
+  width: 100%;
+}
+
+input[type="search"] {
+  width: 30%;
+}
+
 .search_field {
   display: inline;
+  width: auto;
 }
 
 .search_submit {
   display: inline;
+  width: 100px;
 }
 
 .confirmation_text {

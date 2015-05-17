@@ -28,12 +28,8 @@ class Post < ActiveRecord::Base
     :search,
     against: {
       title: "A",
-      street: "B",
-      city: "C",
-      state: "D",
       neighborhood: "B",
-      description: "B",
-      country: "D"
+      description: "B"
     },
     using: { tsearch: { dictionary: "english" } }
   )

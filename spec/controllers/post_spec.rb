@@ -22,6 +22,38 @@ describe PostsController, type: :controller do
     end
   end
 
+  describe "GET #search" do
+    it "searches for location" do
+      post1 = create(
+        :post,
+        street: "688 Broadway",
+        city: "Somerville",
+        state: "MA",
+        show: true
+      )
+
+      # rubocop:disable UselessAssignment
+      post2 = create(
+        :post,
+        street: "3350 Adeline St.",
+        city: "Berkeley",
+        state: "CA",
+        show: true
+      )
+      # rubocop:enable UselessAssignment
+
+      get :search, location: "Somerville, MA"
+
+      expect(assigns(:posts)).to match_array([post1])
+    end
+
+    it "searches for description" do
+    end
+
+    it "searches for description and location" do
+    end
+  end
+
   describe "GET #create" do
     it "creates a post" do
       post :create, post: attributes_for(:post)

@@ -1,13 +1,26 @@
-<%= form_tag(posts_path, method: "get") do %>
+<%= form_tag(posts_path, method: "get", class: "search_form") do %>
 
-  <%=
-    search_field_tag(
-      :query,
-      params["query"],
-      placeholder: "Search Housing Posts",
-      class: "search_field"
-    )
-  %>
+  <div>
+    <%= label_tag :query %>
+    <%=
+      search_field_tag(
+        :query,
+        params["query"],
+        placeholder: "Search Housing Posts",
+        class: "search_field"
+      )
+    %>
+
+    <%= label_tag :location %>
+    <%=
+      search_field_tag(
+        :location,
+        params["location"],
+        placeholder: "Location",
+        class: "search_field"
+      )
+    %>
+  </div>
 
   <div>
 
@@ -27,7 +40,7 @@
         params[:available_or_needed] != "needed"
       )
     %>
-    <%= label_tag :available_or_needed_available, "Housing Available" %>
+    <%= label_tag :available_or_needed_available, "Housing Available", class: "search_submit"%>
 
   </div>
 

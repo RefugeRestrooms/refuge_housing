@@ -3,7 +3,11 @@ class PostsController < ApplicationController
     @posts = Post.active
 
     return unless params[:available_or_needed].present?
-    redirect_to search_path(params[:available_or_needed], params[:query])
+    redirect_to search_path(
+      params[:available_or_needed],
+      query: params[:query],
+      location: params[:location]
+    )
   end
 
   def search
@@ -117,16 +121,26 @@ class PostsController < ApplicationController
     end
   end
 
-  def query_location
-    if params[:query].present?
-      Post.active.search(params[:query])
+  def query_location(posts)
+    if params[:location].blank?
+      posts
     else
-      Post.active
+      posts.near(params[:location])
+    end
+  end
+
+  def query_description(posts)
+    if params[:query].blank?
+      posts
+    else
+      posts.search(params[:query])
     end
   end
 
   def post_search
-    posts = query_location
+    posts = Post.active
+    posts = query_location(posts)
+    posts = query_description(posts)
 
     if params[:available_or_needed] == "available"
       posts.available
