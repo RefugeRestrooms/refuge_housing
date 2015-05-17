@@ -24,23 +24,23 @@
 
   <div>
 
-    <%= label_tag :available_or_needed_needed, "Housing Needed" %>
+    <%= label_tag :type, "Housing Needed" %>
     <%=
       radio_button_tag(
-        :available_or_needed,
+        :type,
         :needed,
-        params[:available_or_needed] == "needed"
+        params[:type] == "needed"
       )
     %>
 
     <%=
       radio_button_tag(
-        :available_or_needed,
+        :type,
         :available,
-        params[:available_or_needed] != "needed"
+        params[:type] != "needed"
       )
     %>
-    <%= label_tag :available_or_needed_available, "Housing Available", class: "search_submit"%>
+    <%= label_tag :type, "Housing Available", class: "search_submit"%>
 
   </div>
 

@@ -1,18 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.active
-
-    return unless params[:available_or_needed].present?
-    redirect_to search_path(
-      params[:available_or_needed],
-      query: params[:query],
-      location: params[:location]
-    )
-  end
-
-  def search
-    @posts = post_search
-    render "index"
+    if check_for_search_params
+      @posts = post_search
+    else
+      @posts = Post.active
+    end
   end
 
   def new
@@ -121,6 +113,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def check_for_search_params
+    [:type, :location, :query].any? { |k| params.key?(k) }
+  end
+
   def query_location(posts)
     if params[:location].blank?
       posts
@@ -137,17 +133,20 @@ class PostsController < ApplicationController
     end
   end
 
-  def post_search
-    posts = Post.active
-    posts = query_location(posts)
-    posts = query_description(posts)
-
-    if params[:available_or_needed] == "available"
+  def filter_type(posts)
+    if params[:type] == "available"
       posts.available
-    elsif params[:available_or_needed] == "needed"
+    elsif params[:type] == "needed"
       posts.needed
     else
       posts
     end
+  end
+
+  def post_search
+    posts = Post.active
+    posts = query_location(posts)
+    posts = query_description(posts)
+    filter_type(posts)
   end
 end

@@ -11,6 +11,13 @@ FactoryGirl.define do
     expiration { Time.current.utc + 2.weeks }
     validation "7c745b58bd4e49d81f117ab738f451f4"
 
+    factory :berkeley_post
+
+    factory :boston_post do
+      city "Boston"
+      state "MA"
+    end
+
     factory :available_post do
       title "Have couch in Berkeley"
       description "Have couch in Berkeley for two weeks"

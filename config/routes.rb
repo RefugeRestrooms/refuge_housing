@@ -10,7 +10,5 @@ Rails.application.routes.draw do
 
   get "validation_error", to: "posts#validation_error"
 
-  get ":available_or_needed", to: "posts#search", as: "search"
-
   mount SubdivisionSelect::Engine, at: "subdivisions"
 end

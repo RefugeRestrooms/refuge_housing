@@ -14,43 +14,69 @@ describe PostsController, type: :controller do
     end
 
     it "loads all of the posts into @posts" do
-      post1 = create(:post, show: true)
-      post2 = create(:post, street: "Shattuck Ave.", show: true)
+      post1 = create(:post, post_type: :available, show: true)
+      post2 = create(:post, post_type: :needed, street: "Shattuck Ave.", show: true)
       get :index
 
       expect(assigns(:posts)).to match_array([post1, post2])
     end
-  end
 
-  describe "GET #search" do
     it "searches for location" do
       post1 = create(
-        :post,
-        street: "688 Broadway",
-        city: "Somerville",
-        state: "MA",
+        :boston_post,
         show: true
       )
 
       # rubocop:disable UselessAssignment
       post2 = create(
-        :post,
-        street: "3350 Adeline St.",
-        city: "Berkeley",
-        state: "CA",
+        :berkeley_post,
         show: true
       )
       # rubocop:enable UselessAssignment
 
-      get :search, location: "Somerville, MA"
+      get :index, location: "Boston, MA"
 
       expect(assigns(:posts)).to match_array([post1])
     end
 
     it "searches for description" do
+      post1 = create(
+        :post,
+        description: "Need housing in Boston",
+        show: true
+      )
+      # rubocop:disable UselessAssignment
+      post2 = create(
+        :post,
+        show: true
+      )
+      # rubocop:enable UselessAssignment
+
+      get :index, query: "Need housing in Boston"
+
+      expect(assigns(:posts)).to match_array([post1])
     end
 
     it "searches for description and location" do
+      post1 = create(
+        :boston_post,
+        description: "Need housing in Boston",
+        show: true
+      )
+      # rubocop:disable UselessAssignment
+      post2 = create(
+        :boston_post,
+        show: true
+      )
+      post3 = create(
+        :berkeley_post,
+        show: true
+      )
+      # rubocop:enable UselessAssignment
+
+      get :index, location: "Boston, MA", query: "Need housing in Boston"
+
+      expect(assigns(:posts)).to match_array([post1])
     end
   end
 

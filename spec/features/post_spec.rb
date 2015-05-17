@@ -8,8 +8,8 @@ describe "the search process", type: :feature do
     )
 
     visit root_url
-    fill_in "query", with: "Berkeley"
-    choose "Needed"
+    fill_in "location", with: "Berkeley"
+    choose :type_needed
     click_button "Search"
 
     expect(page).to have_content post.title
@@ -22,10 +22,30 @@ describe "the search process", type: :feature do
     )
 
     visit root_url
-    fill_in "query", with: "Berkeley"
+    fill_in "location", with: "Berkeley"
     click_button "Search"
 
     expect(page).to have_content post.title
+  end
+
+  it "shows a post with a query in it's description" do
+    post1 = create(
+      :available_post,
+      description: "I want some tofu pups",
+      show: true
+    )
+    post2 = create(
+      :available_post,
+      title: "A different title",
+      show: true
+    )
+
+    visit root_url
+    fill_in "query", with: "tofu pups"
+    click_button "Search"
+
+    expect(page).to have_content post1.title
+    expect(page).to have_no_content post2.title
   end
 end
 
