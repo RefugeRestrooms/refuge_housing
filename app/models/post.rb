@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
             :validation,
             presence: true
   validates :email,
+            email: true,
             confirmation: true,
             presence: true
   validates :email_confirmation,

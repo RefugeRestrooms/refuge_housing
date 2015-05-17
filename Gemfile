@@ -19,6 +19,8 @@ gem "subdivision_select"
 gem "activeadmin", "~> 1.0.0.pre1"
 gem "devise" # for ActiveAdmin only
 
+gem "email_validator", "~> 1.6.0"
+
 group :development, :test do
   gem "byebug"
   gem "spring"

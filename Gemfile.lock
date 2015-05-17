@@ -95,6 +95,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     execjs (2.5.2)
     factory_girl (4.5.0)
@@ -264,6 +266,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.4.4)
   devise
+  email_validator (~> 1.6.0)
   factory_girl_rails (~> 4.5.0)
   geocoder (~> 1.2.8)
   jquery-rails

@@ -55,6 +55,14 @@ describe "the post submission process" do
 
     expect(page).to have_content("Email confirmation doesn't match Email")
   end
+
+  it "invalidates incorrect email" do
+    visit new_post_url
+    fill_in "Email", with: "mistake"
+    click_button "Create Post"
+
+    expect(page).to have_content("Email is invalid")
+  end
 end
 
 describe "the post confirmation process" do
