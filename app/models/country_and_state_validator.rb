@@ -1,12 +1,12 @@
 class CountryAndStateValidator < ActiveModel::Validator
   def validate(record)
     unless country_is_valid(record.country)
-      record.errors[:country] << "Country is not valid"
+      record.errors[:country] << "is not valid"
       return false
     end
 
     unless state_is_valid(record.country, record.state)
-      record.errors[:state] << "State is not valid"
+      record.errors[:state] << "is not valid"
       return false
     end
   end
