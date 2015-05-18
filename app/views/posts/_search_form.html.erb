@@ -1,7 +1,6 @@
 <%= form_tag(posts_path, method: "get", class: "search_form") do %>
 
   <div>
-    <%= label_tag :query %>
     <%=
       search_field_tag(
         :query,
@@ -11,7 +10,6 @@
       )
     %>
 
-    <%= label_tag :location %>
     <%=
       search_field_tag(
         :location,

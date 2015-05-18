@@ -11,17 +11,10 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="<%= controller_name %> <%= action_name %>">
-    <header>
-      <%=
-        link_to(
-          "Refuge Housing",
-          root_url
-        )
-      %>
-    </header>
+  <body>
+    <%= render partial: "header" %>
 
-    <main>
+    <main class="<%= controller_name %> <%= action_name %>">
       <%= render "flashes" %>
 
       <%= yield %>
