@@ -1,9 +1,9 @@
 body {
   @include font-feature-settings("kern", "liga", "pnum");
-  -webkit-font-smoothing: antialiased;
   color: $base-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
+  -webkit-font-smoothing: antialiased;
   line-height: $base-line-height;
 }
 
@@ -25,7 +25,7 @@ p {
 
 a {
   color: $action-color;
-  text-decoration: none;
+  text-decoration: 0;
   transition: color 0.1s linear;
 
   &:active,
@@ -36,15 +36,15 @@ a {
 
   &:active,
   &:focus {
-    outline: none;
+    outline: 0;
   }
 }
 
 hr {
   border-bottom: $base-border;
-  border-left: none;
-  border-right: none;
-  border-top: none;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
   margin: $base-spacing 0;
 }
 

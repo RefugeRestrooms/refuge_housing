@@ -64,6 +64,7 @@ input[type="search"] {
 input[type="checkbox"] {
   display: inline;
 }
+
 input[type="radio"] {
   display: inline;
   margin-right: $small-spacing / 2;
@@ -77,10 +78,10 @@ input[type="file"] {
 select {
   margin-bottom: $small-spacing;
   margin-top: $small-spacing;
-  width: 100%
+  width: 100%;
 }
 
-.form_error {
-  color: red;
+.form-error {
+  color: $red;
   font-weight: bold;
 }

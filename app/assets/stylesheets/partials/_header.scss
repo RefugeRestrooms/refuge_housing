@@ -1,18 +1,18 @@
 header {
-  padding: 1rem;
-  font-size: 4em;
-  text-align: center;
-  color: $header-font-color;
   background-color: $header-background-color;
   border-radius: 3px;
+  color: $header-font-color;
+  font-size: 4em;
+  padding: 1rem;
+  text-align: center;
 
   a {
-    text-decoration: none;
     color: $header-link-color;
+    text-decoration: none;
 
     &:hover {
-      color: $header-link-color;
       border-bottom: 3px solid $header-link-color;
+      color: $header-link-color;
     }
   }
 }

@@ -1,0 +1,17 @@
+scss_files: "app/assets/stylesheets/**/*.css.scss"
+
+linters:
+  LeadingZero:
+    style: include_zero
+
+  QualifyingElement:
+    enabled: true
+    # Should this be added back?
+    # https://github.com/CSSLint/csslint/wiki/Disallow-unqualified-attribute-selectors
+    allow_element_with_attribute: true
+    alow_element_with_class: false
+    allow_element_with_id: false
+
+
+  StringQuotes:
+    style: double_quotes

@@ -1,4 +1,4 @@
-<%= form_tag(posts_path, method: "get", class: "search_form") do %>
+<%= form_tag(posts_path, method: "get", class: "search-form") do %>
 
   <div>
     <%=
@@ -6,7 +6,7 @@
         :query,
         params["query"],
         placeholder: "Search Housing Posts",
-        class: "search_field"
+        class: "search-field"
       )
     %>
 
@@ -15,7 +15,7 @@
         :location,
         params["location"],
         placeholder: "Location",
-        class: "search_field"
+        class: "search-field"
       )
     %>
   </div>
@@ -38,9 +38,9 @@
         params[:type] != "needed"
       )
     %>
-    <%= label_tag :type, "Housing Available", class: "search_submit"%>
+    <%= label_tag :type, "Housing Available", class: "search-submit"%>
 
   </div>
 
-  <%= submit_tag "Search", class: "search_submit" %>
+  <%= submit_tag "Search", class: "search-submit" %>
 <% end %>

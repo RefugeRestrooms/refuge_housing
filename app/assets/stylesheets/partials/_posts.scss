@@ -17,25 +17,25 @@
 
 
   h1 {
-    text-align: center;
     font-size: 1.5em;
+    text-align: center;
     text-decoration: underline;
   }
 
   ul li {
     @include span-columns(4);
     @include omega(3n);
-    padding: 2em;
-    margin-top: 4em;
-    text-align: center;
     border-color: $purple;
     border-radius: 10px;
     border-style: solid;
     border-width: 2px;
+    margin-top: 4em;
+    padding: 2em;
+    text-align: center;
+  }
 
-    .description {
-      font-style: italic;
-    }
+  .description {
+    font-style: italic;
   }
 }
 
@@ -48,12 +48,12 @@ form {
 
   input {
     display: inline-block;
-    text-align: center;
     margin: inherit auto;
+    text-align: center;
   }
 }
 
-.search_form {
+.search-form {
   @include span-columns(6);
   margin-left: 0;
   width: 100%;
@@ -63,16 +63,16 @@ input[type="search"] {
   width: 30%;
 }
 
-.search_field {
+.search-field {
   display: inline;
   width: auto;
 }
 
-.search_submit {
+.search-submit {
   display: inline;
   width: 100px;
 }
 
-.confirmation_text {
-  text-align: center
+.confirmation-text {
+  text-align: center;
 }
