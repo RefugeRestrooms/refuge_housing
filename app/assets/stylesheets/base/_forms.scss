@@ -57,17 +57,8 @@ textarea {
   resize: vertical;
 }
 
-input[type="search"] {
-  @include appearance(none);
-}
-
 input[type="checkbox"] {
   display: inline;
-}
-
-input[type="radio"] {
-  display: inline;
-  margin-right: $small-spacing / 2;
 }
 
 input[type="file"] {
