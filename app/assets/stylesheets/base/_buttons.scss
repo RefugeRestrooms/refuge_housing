@@ -36,37 +36,37 @@ button {
     display: none;
   }
 
+  .button-group-item {
+    border: 1px solid $button-group-border;
+    color: $dark-purple;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $base-font-size;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.75em 1em;
+    width: 100px;
+
+    &:focus,
+    &:hover {
+      background-color: darken($button-group-background, 3%);
+      color: $alt-font-color;
+    }
+  }
+
   label {
     margin-bottom: 0;
 
-    .button-group-item {
-      border: 1px solid $button-group-border-checked;
-      color: $dark-purple;
-      cursor: pointer;
-      display: inline-block;
-      font-size: $base-font-size;
-      font-weight: 600;
-      line-height: 1;
-      padding: 0.75em 1em;
-      width: 100px;
-
-      &:focus,
-      &:hover {
-        background-color: darken($button-group-background, 3%);
-        color: $white;
-      }
-    }
-
     &:first-child .button-group-item {
-      border-top-left-radius: $base-border-radius;
       border-bottom-left-radius: $base-border-radius;
-      border-left: 1px solid $button-group-border-checked;
+      border-left: 1px solid $button-group-border;
+      border-top-left-radius: $base-border-radius;
     }
 
     &:last-child .button-group-item {
-      border-top-right-radius: $base-border-radius;
       border-bottom-right-radius: $base-border-radius;
-      border-right: 1px solid $button-group-border-checked;
+      border-right: 1px solid $button-group-border;
+      border-top-right-radius: $base-border-radius;
     }
 
     input:checked + .button-group-item {
