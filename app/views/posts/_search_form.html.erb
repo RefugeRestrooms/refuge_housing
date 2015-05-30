@@ -6,19 +6,16 @@
         radio_button_tag(
           :type,
           :needed,
-          params[:type] == "needed",
-          class: "button-group"
+          params[:type] == "needed"
         )
       %>
       <span class="button-group-item">Needed</span>
-    </label>
-    <label>
+    </label><label>
       <%=
         radio_button_tag(
           :type,
           :available,
-          params[:type] != "needed",
-          class: "button-group"
+          params[:type] != "needed"
         )
       %>
       <span class="button-group-item">Available</span>
@@ -34,7 +31,6 @@
         class: "search-field"
       )
     %>
-
     <%=
       search_field_tag(
         :location,
