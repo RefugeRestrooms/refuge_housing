@@ -8,13 +8,12 @@ fieldset {
 input,
 label,
 select {
-  display: block;
+  display: inline-block;
   font-family: $base-font-family;
   font-size: $base-font-size;
 }
 
 label {
-  display: inline;
   font-weight: 600;
   margin-bottom: $small-spacing / 2;
 
@@ -57,17 +56,8 @@ textarea {
   resize: vertical;
 }
 
-input[type="search"] {
-  @include appearance(none);
-}
-
 input[type="checkbox"] {
   display: inline;
-}
-
-input[type="radio"] {
-  display: inline;
-  margin-right: $small-spacing / 2;
 }
 
 input[type="file"] {

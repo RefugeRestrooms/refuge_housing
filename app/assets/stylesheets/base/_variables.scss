@@ -20,22 +20,33 @@ $blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
-$purple: #41326b;
+$dark-purple: #41326b;
+$light-purple: #8377af;
 $red: #f00;
+$white: #fff;
 
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: #000;
-$action-color: $purple;
+$action-color: $dark-purple;
+$alt-font-color: $white;
 
 // Header
-$header-background-color: $purple;
-$header-font-color: #fff;
-$header-link-color: #fff;
+$header-background-color: $dark-purple;
+$header-font-color: $white;
+$header-link-color: $white;
 
 // Border
-$base-border-color: $purple;
+$base-border-color: $dark-purple;
 $base-border: 1px solid $base-border-color;
+
+// Buttons
+$button-group-color: $white;
+$button-group-color-checked: $white;
+$button-group-background: $light-purple;
+$button-group-background-checked: $dark-purple;
+$button-group-border: $dark-purple;
+$button-group-border-checked: $dark-purple;
 
 // Forms
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);

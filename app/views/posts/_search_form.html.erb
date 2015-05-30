@@ -1,6 +1,28 @@
 <%= form_tag(posts_path, method: "get", class: "search-form") do %>
 
-  <div>
+  <div class="button-group">
+    <label>
+      <%=
+        radio_button_tag(
+          :type,
+          :needed,
+          params[:type] == "needed"
+        )
+      %>
+      <span class="button-group-item">Needed</span>
+    </label><label>
+      <%=
+        radio_button_tag(
+          :type,
+          :available,
+          params[:type] != "needed"
+        )
+      %>
+      <span class="button-group-item">Available</span>
+    </label>
+  </div>
+
+  <div class="search-field">
     <%=
       search_field_tag(
         :query,
@@ -9,7 +31,6 @@
         class: "search-field"
       )
     %>
-
     <%=
       search_field_tag(
         :location,
@@ -18,28 +39,6 @@
         class: "search-field"
       )
     %>
-  </div>
-
-  <div>
-
-    <%= label_tag :type, "Housing Needed" %>
-    <%=
-      radio_button_tag(
-        :type,
-        :needed,
-        params[:type] == "needed"
-      )
-    %>
-
-    <%=
-      radio_button_tag(
-        :type,
-        :available,
-        params[:type] != "needed"
-      )
-    %>
-    <%= label_tag :type, "Housing Available", class: "search-submit"%>
-
   </div>
 
   <%= submit_tag "Search", class: "search-submit" %>

@@ -25,7 +25,7 @@
   ul li {
     @include span-columns(4);
     @include omega(3n);
-    border-color: $purple;
+    border-color: $dark-purple;
     border-radius: 10px;
     border-style: solid;
     border-width: 2px;
@@ -47,7 +47,7 @@ form {
   text-transform: capitalize;
 
   input {
-    display: inline-block;
+    display: inherit;
     margin: inherit auto;
     text-align: center;
   }

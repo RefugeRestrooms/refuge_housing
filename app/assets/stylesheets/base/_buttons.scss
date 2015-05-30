@@ -28,3 +28,53 @@ button {
     opacity: 0.5;
   }
 }
+
+.button-group {
+  display: inline;
+
+  input {
+    display: none;
+  }
+
+  .button-group-item {
+    border: 1px solid $button-group-border;
+    color: $dark-purple;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $base-font-size;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.75em 1em;
+    width: 100px;
+
+    &:focus,
+    &:hover {
+      background-color: darken($button-group-background, 3%);
+      color: $alt-font-color;
+    }
+  }
+
+  label {
+    margin-bottom: 0;
+
+    &:first-child .button-group-item {
+      border-bottom-left-radius: $base-border-radius;
+      border-left: 1px solid $button-group-border;
+      border-top-left-radius: $base-border-radius;
+    }
+
+    &:last-child .button-group-item {
+      border-bottom-right-radius: $base-border-radius;
+      border-right: 1px solid $button-group-border;
+      border-top-right-radius: $base-border-radius;
+    }
+
+    input:checked + .button-group-item {
+      background: $button-group-background-checked;
+      border: 1px solid $button-group-border-checked;
+      box-shadow: inset 0 1px 2px darken($button-group-background-checked, 10%);
+      color: $button-group-color-checked;
+    }
+  }
+}
+
