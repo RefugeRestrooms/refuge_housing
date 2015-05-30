@@ -40,15 +40,12 @@ button {
     margin-bottom: 0;
 
     .button-group-item {
-      background: $button-group-background;
-      border-left: $button-group-border;
-      border-radius: 0;
-      border-right: $button-group-border;
-      color: $button-group-color;
+      border: 1px solid $button-group-border-checked;
+      color: $dark-purple;
       cursor: pointer;
       display: inline-block;
       font-size: $base-font-size;
-      font-weight: normal;
+      font-weight: 600;
       line-height: 1;
       padding: 0.75em 1em;
       width: 100px;
@@ -56,19 +53,20 @@ button {
       &:focus,
       &:hover {
         background-color: darken($button-group-background, 3%);
+        color: $white;
       }
     }
 
     &:first-child .button-group-item {
       border-top-left-radius: $base-border-radius;
       border-bottom-left-radius: $base-border-radius;
-      border-left: $button-group-border;
+      border-left: 1px solid $button-group-border-checked;
     }
 
     &:last-child .button-group-item {
       border-top-right-radius: $base-border-radius;
       border-bottom-right-radius: $base-border-radius;
-      border-right: $button-group-border;
+      border-right: 1px solid $button-group-border-checked;
     }
 
     input:checked + .button-group-item {
