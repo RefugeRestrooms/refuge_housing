@@ -2,7 +2,8 @@ header {
   background-color: $header-background-color;
   border-radius: 3px;
   color: $header-font-color;
-  font-size: 4em;
+  display: block;
+  height: 50px;
   padding: 1rem;
   text-align: center;
 
@@ -11,8 +12,30 @@ header {
     text-decoration: none;
 
     &:hover {
-      border-bottom: 3px solid $header-link-color;
       color: $header-link-color;
     }
+  }
+
+  .link-container {
+    height: 10%;
+    position: relative;
+  }
+
+  .home-link {
+    display: inline;
+    font-size: 1em;
+    left: 15px;
+    position: absolute;
+  }
+
+  .static-links {
+    display: inline;
+    font-size: 1em;
+    position: absolute;
+    right: 15px;
+  }
+
+  .static-link {
+    padding-left: 20px;
   }
 }

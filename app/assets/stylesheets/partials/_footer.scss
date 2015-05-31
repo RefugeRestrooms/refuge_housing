@@ -1,0 +1,53 @@
+.footer {
+  clear: both;
+  height: 180px;
+  margin-top: -180px;
+  padding-top: 30px;
+  position: relative;
+  text-align: center;
+}
+
+.icon {
+  background: {
+    position: 0 50%;
+    size: 200% 100%;
+  }
+  display: inline-block;
+  height: 10px;
+  margin: 4px;
+  padding: 12px;
+  width: 10px;
+
+  &:hover {
+    background-position: 100% 50%;
+  }
+
+  &.icon-github {
+    background-image: asset-url("github.svg");
+  }
+
+  &.icon-twitter {
+    background-image: asset-url("twitter.svg");
+  }
+
+  &.icon-facebook {
+    background-image: asset-url("facebook.svg");
+  }
+
+  &.icon-tumblr {
+    background-image: asset-url("tumblr.svg");
+  }
+
+  &.icon-email {
+    background-image: asset-url("mail.svg");
+  }
+}
+
+.icon-link {
+  color: transparent;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+

@@ -1,10 +1,35 @@
 <header>
-  <%=
-    link_to(
-      "Refuge Housing",
-      root_url
-    )
-  %>
+  <div class="link-container">
+    <%=
+      link_to(
+        "Refuge Housing",
+        root_url,
+        class: "home-link"
+      )
+    %>
+    <div class="static-links">
+      <%=
+        link_to(
+          "New Post",
+          new_post_url,
+          class: "static-link"
+        )
+      %>
+      <%=
+        link_to(
+          "About",
+          about_url,
+          class: "static-link"
+        )
+      %>
+      <%=
+        link_to(
+          "Contact",
+          contact_url,
+          class: "static-link"
+        )
+      %>
+    </div>
+  </div>
 </header>
-
 

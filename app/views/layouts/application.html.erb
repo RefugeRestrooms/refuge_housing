@@ -14,11 +14,14 @@
   <body>
     <%= render partial: "header" %>
 
-    <main class="<%= controller_name %> <%= action_name %>">
-      <%= render "flashes" %>
+    <div class="wrap">
+      <main class="<%= controller_name %> <%= action_name %>">
+        <%= render "flashes" %>
 
-      <%= yield %>
-    </main>
+        <%= yield %>
+      </main>
+    </div>
 
+    <%= render partial: "footer" %>
   </body>
 </html>

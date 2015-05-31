@@ -10,5 +10,10 @@ Rails.application.routes.draw do
 
   get "validation_error", to: "posts#validation_error"
 
+  get "about", controller: "about"
+
+  get "contact", to: "contacts#new"
+  resources "contacts", only: [:new, :create]
+
   mount SubdivisionSelect::Engine, at: "subdivisions"
 end
