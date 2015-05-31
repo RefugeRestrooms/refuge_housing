@@ -1,6 +1,10 @@
 .footer {
+  position: relative;
+  height: 180px;
+  clear: both;
+  margin-top: -180px;
   height: 20px;
-  padding-top: 10px;
+  padding-top: 30px;
   text-align: center;
 }
 .icon {

@@ -1,5 +1,18 @@
-main,
+html, body {
+  height: 100%;
+}
+
+main {
+  @include outer-container;
+  overflow: auto;
+  padding-bottom: 180px;
+}
+
 section {
   @include outer-container;
+}
+
+#wrap {
+  min-height: 100%
 }
 
