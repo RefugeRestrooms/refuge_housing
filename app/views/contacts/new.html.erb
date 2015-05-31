@@ -1,0 +1,23 @@
+<div align="center">
+  <h1>Send us a message:</h1>
+
+  <%= form_for @contact do |f| %>
+    <p>
+      <%= f.label :name %></br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email %></br>
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :message %></br>
+      <%= f.text_area :message %>
+    </p>
+    <%= hidden_field_tag(:nickname, hint: "Maybe stop some spam...") %>
+    <p>
+      <%= f.submit 'Send message' %>
+    </p>
+  <% end %>
+</div>
+
