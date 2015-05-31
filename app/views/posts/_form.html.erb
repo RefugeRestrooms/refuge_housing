@@ -1,10 +1,26 @@
 <% url = post_path(:id => params[:id], validation: params[:validation]) if params[:validation] %>
 <%= form_for(@post, url: url) do |f| %>
   <%= render "posts/form_error", :target => @post %>
-  <p>
-    <%= f.select :post_type, Post.post_types %>
-  </p>
-
+  <div class="button-group">
+    <label>
+      <%=
+        f.radio_button(
+          :post_type,
+          :needed
+        )
+      %>
+      <span class="button-group-item">Needed</span>
+    </label><label>
+      <%=
+        f.radio_button(
+          :post_type,
+          :available
+        )
+      %>
+      <span class="button-group-item">Available</span>
+    </label>
+  </div>
+  <p></p>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
