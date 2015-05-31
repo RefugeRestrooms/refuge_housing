@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -12,7 +13,7 @@ section {
   @include outer-container;
 }
 
-#wrap {
-  min-height: 100%
+.wrap {
+  min-height: 100%;
 }
 
