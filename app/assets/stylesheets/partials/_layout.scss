@@ -5,6 +5,7 @@ body {
 
 main {
   @include outer-container;
+  margin-bottom: 20px;
   margin-top: 20px;
   overflow: auto;
   padding-bottom: 180px;
