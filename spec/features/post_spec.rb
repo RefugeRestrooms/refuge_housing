@@ -50,6 +50,13 @@ describe "the search process", type: :feature do
 end
 
 describe "the post submission process" do
+  it "is accessible from the home link" do
+    visit root_url
+    click_link "New Post"
+
+    expect(page).to have_content("Submit a New Post")
+  end
+
   it "submits a new post with success" do
     visit new_post_url
     fill_in_post_form

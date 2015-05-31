@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "validation_error", to: "posts#validation_error"
 
-  get "about", to: "about"
+  get "about", controller: "about"
 
   get "contact", to: "contacts#new"
   resources "contacts", only: [:new, :create]
