@@ -1,1 +1,36 @@
-<%= render @post %>
+<h1>
+  <%= @post.title %>
+</h1>
+
+<div>
+  <%= @post.street %>
+</div>
+
+<div>
+  <%= @post.city %>
+</div>
+
+<div>
+  <%= @post.state %>
+</div>
+
+<div>
+  <%= @post.neighborhood %>
+</div>
+
+<div>
+  <%= @post.country %>
+</div>
+
+<div class="description">
+  <%= @post.description %>
+</div>
+
+<div>
+  <%=
+    link_to(
+      "map",
+      "https://www.google.com/maps?hl=en&q=#{ maps_query(@post) }"
+    )
+  %>
+</div>
