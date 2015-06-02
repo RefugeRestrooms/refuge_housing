@@ -16,7 +16,7 @@ number_of_fake_posts.times do |i|
     city: Faker::Address.city ,
     state: Faker::Address.state_abbr,
     country: "US",
-    neighborhood: Faker::Address.city,
+    neighborhood: [Faker::Address.city, ""].sample,
     description: Faker::Lorem.sentence,
     email: email,
     email_confirmation: email,
