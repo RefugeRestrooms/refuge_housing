@@ -8,12 +8,12 @@
 https://www.vagrantup.com/downloads
 
 ### 3 Capture the powers of vagrant
-  * In the repo dir: <code>vagrant up</code> (Safely ignore: 'dpkg-preconfigure: unable to re-open stdin: No such file or directory')
-  * If changes have been made since running vagrant up: <code>vagrant provision</code>
-  * To login to the machine: <code>vagrant ssh</code>
+  * In the repo dir: `vagrant up` (Safely ignore: 'dpkg-preconfigure: unable to re-open stdin: No such file or directory')
+  * If changes have been made since running vagrant up: `vagrant provision`
+  * To login to the machine: `vagrant ssh`
   * `cd  /vagrant/` to navigate to the refuge repo.
   * There is a rake wrapper to execute commands in refuge repo on the vagrant machine
-  without using ssh. Run `rake vagrant:shell[command]`, EX: `rake vagrant:shell['rails s -b 0.0.0.0']
+  without using ssh. Run `rake vagrant:shell[command]`, EX: `rake vagrant:shell['rails s -b 0.0.0.0']`
 
 Note: `-b 0.0.0.0` flag is required to access the server via localhost, since it needs to be visable from outside the vagrant vm.
 
