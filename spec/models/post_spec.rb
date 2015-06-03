@@ -62,4 +62,12 @@ describe Post do
       expect(post.address).to eq "Berkeley, CA, USA"
     end
   end
+
+  describe ".generate_validation" do
+    it "returns a 32 bit hash" do
+      validation = Post.generate_validation
+
+      expect(validation).to match /\h{32}/
+    end
+  end
 end

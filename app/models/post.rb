@@ -49,4 +49,13 @@ class Post < ActiveRecord::Base
   def address
     [street, city, state, country].compact.join(", ")
   end
+
+  def self.generate_validation
+    require "securerandom"
+    # a collision here has low probability, but might as well check
+    loop do
+      validation = SecureRandom.hex
+      return validation if Post.find_by_validation(validation).nil?
+    end
+  end
 end
