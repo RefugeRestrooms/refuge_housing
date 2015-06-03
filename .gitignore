@@ -14,3 +14,6 @@
 
 # from rake-fast zsh plugin
 .rake_tasks
+
+# vagrant
+.vagrant
