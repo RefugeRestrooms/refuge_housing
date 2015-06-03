@@ -3,7 +3,7 @@
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
-BOXNAME = "refugere"
+BOXNAME = "refuge"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Ubuntu 14.04 base box
