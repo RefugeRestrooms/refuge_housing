@@ -12,6 +12,8 @@ linters:
     alow_element_with_class: false
     allow_element_with_id: false
 
+  SelectorDepth:
+    max_depth: 4
 
   StringQuotes:
     style: double_quotes
