@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(create_constructor(post_params))
+    @post = Post.new(Post.create_default_params(post_params))
 
     if @post.save
       ConfirmationMailer.confirmation_email(@post).deliver_now
@@ -95,13 +95,6 @@ class PostsController < ApplicationController
         :neighborhood,
         :description
       )
-  end
-
-  def create_constructor(init_params)
-    init_params[:expiration] = (Time.current.utc + 1.day).iso8601
-    init_params[:post_type] = params[:post_type].to_i
-    init_params[:validation] = Post.generate_validation
-    init_params
   end
 
   def check_for_search_params

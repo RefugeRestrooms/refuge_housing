@@ -70,4 +70,24 @@ describe Post do
       expect(validation).to match(/\h{32}/)
     end
   end
+
+  describe ".create_default_params" do
+    it "returns a validator" do
+      params = Post.create_default_params({})
+
+      expect(params).to include(:validation)
+    end
+
+    it "returns an expiration" do
+      params = Post.create_default_params({})
+
+      expect(params).to include(:expiration)
+    end
+
+    it "converts post type to int" do
+      params = Post.create_default_params(post_type: "1")
+
+      expect(params).to include(post_type: 1)
+    end
+  end
 end
