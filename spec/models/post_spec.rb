@@ -67,7 +67,7 @@ describe Post do
     it "returns a 32 bit hash" do
       validation = Post.generate_validation
 
-      expect(validation).to match /\h{32}/
+      expect(validation).to match(/\h{32}/)
     end
   end
 end
