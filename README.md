@@ -1,4 +1,4 @@
-# Contributing
+# Refuge Housing
 
 ## Setting Up Development Environment
 
