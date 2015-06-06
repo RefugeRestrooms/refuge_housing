@@ -1,0 +1,7 @@
+language: ruby
+bundler_args: --without development
+cache: bundler
+script:
+  - bundle exec rake test
+rvm:
+  - 2.1.3
