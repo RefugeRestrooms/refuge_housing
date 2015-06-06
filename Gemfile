@@ -24,6 +24,10 @@ gem "devise" # for ActiveAdmin only
 gem "email_validator", "~> 1.6.0"
 
 gem "mail_form", "~> 1.5.1"
+ 
+group :production do
+  gem "rails_12factor"
+end
 
 group :development, :test do
   gem "byebug"
