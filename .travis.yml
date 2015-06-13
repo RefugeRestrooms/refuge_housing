@@ -1,7 +1,11 @@
 language: ruby
 bundler_args: --without development
 cache: bundler
+env:
+  - RAILS_ENV=test
 script:
+  - bundle exec rake db:schema:load
+  - bundle exec rake db:test:prepare
   - bundle exec rake test
 rvm:
   - 2.1.3
