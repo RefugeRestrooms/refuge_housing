@@ -42,5 +42,5 @@ group :test do
   gem "factory_girl_rails", "~> 4.5.0"
   gem "rspec-rails", "~> 3.2.1"
   gem "rubocop", "~> 0.30.1"
-  gem "scss_lint", "~> 0.38.0", require: false
+  gem "scss_lint", "~> 0.39.0", require: false
 end
