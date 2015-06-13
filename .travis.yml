@@ -4,7 +4,7 @@ cache: bundler
 env:
   - RAILS_ENV=test
 script:
-  - bundle exec rake db:schema:load
+  - bundle exec rake db:setup
   - bundle exec rake db:test:prepare
   - bundle exec rake test
 rvm:
