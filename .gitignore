@@ -17,3 +17,6 @@
 
 # vagrant
 .vagrant
+
+# coverage report
+/coverage

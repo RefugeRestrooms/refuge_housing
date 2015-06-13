@@ -1,6 +1,8 @@
 scss_files: "app/assets/stylesheets/**/*.css.scss"
 
-exclude: "vendor/**/*"
+exclude: 
+  - "vendor/**/*"
+  - "coverage/**/*"
 
 linters:
   LeadingZero:

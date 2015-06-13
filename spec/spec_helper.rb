@@ -27,6 +27,9 @@ Dir[File.expand_path(
     "*.rb")
 )].each { |f| require f }
 
+require "simplecov"
+SimpleCov.start
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
