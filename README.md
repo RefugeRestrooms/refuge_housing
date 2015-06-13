@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/RefugeRestrooms/refuge_housing.svg)](https://travis-ci.org/RefugeRestrooms/refuge_housing)
+
 # Refuge Housing
 
 ## Setting Up Development Environment
