@@ -2,31 +2,28 @@
   <%= @post.title %>
 </h1>
 
-<div>
-  <%= @post.city %>
+<div class="info">
+  <div>
+    <%= @post.city %>
+  </div>
+
+  <div>
+    <%= @post.state %>
+  </div>
+
+  <div>
+    <%= @post.neighborhood %>
+  </div>
+
+  <div>
+    <%= @post.country %>
+  </div>
+
+  <div class="description">
+    <%= @post.description %>
+  </div>
 </div>
 
-<div>
-  <%= @post.state %>
-</div>
-
-<div>
-  <%= @post.neighborhood %>
-</div>
-
-<div>
-  <%= @post.country %>
-</div>
-
-<div class="description">
-  <%= @post.description %>
-</div>
-
-<div>
-  <%=
-    link_to(
-      "map",
-      "https://www.google.com/maps?hl=en&q=#{ maps_query(@post) }"
-    )
-  %>
+<div id="map" class="map">
+  <%# Filled in via JS with leaflet %>
 </div>

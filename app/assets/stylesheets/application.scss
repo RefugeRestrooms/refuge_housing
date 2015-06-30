@@ -2,9 +2,16 @@
 @import "base/base";
 @import "neat";
 
+@import "leaflet";
+
 @import "refills/flashes";
 
 @import "partials/footer";
 @import "partials/header";
 @import "partials/layout";
 @import "partials/posts";
+@import "partials/show_post";
+
+//# From https://github.com/axyjo/leaflet-rails#quickstart-guide
+//= depend_on_asset "layers.png"
+//= depend_on_asset "layers-2x.png"
