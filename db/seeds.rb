@@ -31,7 +31,6 @@ number_of_fake_posts.times do |i|
   puts "Created #{(i + 1).ordinalize} fake Post (out of #{number_of_fake_posts})."
 end
 
-
 email = Faker::Internet.email
 Post.create!(
   title: "Expired Post",
@@ -69,7 +68,6 @@ Post.create!(
   show: false
 )
 puts "Created unconfirmed posts"
-
 
 AdminUser.find_by_email("admin@example.com").destroy
 AdminUser.create!(
