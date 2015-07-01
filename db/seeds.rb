@@ -68,7 +68,16 @@ Post.create!(
   validation: SecureRandom.hex,
   show: false
 )
+puts "Created unconfirmed posts"
+
+
+AdminUser.find_by_email("admin@example.com").destroy
+AdminUser.create!(
+  email: "admin@example.com",
+  password: "password",
+  password_confirmation: "password"
+)
+puts "Created AdminUser (email: 'admin@example.com', password: 'password')"
 
 puts "Done! :)"
-
 # rubocop:enable Output
