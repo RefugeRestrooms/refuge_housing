@@ -1,5 +1,16 @@
 $(function() {
-  var map = L.map('map').setView([51.505, -0.09], 13);
+  var latitude = $('#map').data('latitude');
+  var longitude = $('#map').data('longitude');
+
+  var map = L.map('map').setView([latitude, longitude], 13);
+  var RADIUS = 1000;
+
+  L.circle(L.latLng(latitude, longitude), RADIUS, {
+      opacity: 1,
+      weight: 1,
+      fillOpacity: 0.4
+  }).addTo(map);
+
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       maxZoom: 18,
       id: 'seancllns.mjefk2j8',

@@ -3,23 +3,23 @@
 </h1>
 
 <div class="info">
-  <div>
+  <div class="city">
     <%= @post.city %>
   </div>
 
-  <div>
+  <div class="state">
     <%= @post.state %>
   </div>
 
-  <div>
+  <div class="postal-code">
     <%= @post.postal_code %>
   </div>
 
-  <div>
+  <div class="neighborhood">
     <%= @post.neighborhood %>
   </div>
 
-  <div>
+  <div class="country">
     <%= @post.country %>
   </div>
 
@@ -28,6 +28,9 @@
   </div>
 </div>
 
-<div id="map" class="map">
+<div id="map"
+     class="map"
+     data-latitude="<%= @post.latitude.round(2) %>"
+     data-longitude="<%= @post.longitude.round(2) %>">
   <%# Filled in via JS with leaflet %>
 </div>
