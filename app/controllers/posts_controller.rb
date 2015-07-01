@@ -91,6 +91,7 @@ class PostsController < ApplicationController
         :street,
         :city,
         :state,
+        :postal_code,
         :country,
         :neighborhood,
         :description

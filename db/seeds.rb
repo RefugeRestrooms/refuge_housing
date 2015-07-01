@@ -17,6 +17,7 @@ number_of_fake_posts.times do |i|
     street: Faker::Address.street_address,
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
+    postal_code: Faker::Address.zip_code,
     country: "US",
     neighborhood: [Faker::Address.city, ""].sample,
     description: Faker::Lorem.sentence,
@@ -30,16 +31,15 @@ number_of_fake_posts.times do |i|
   puts "Created #{(i + 1).ordinalize} fake Post (out of #{number_of_fake_posts})."
 end
 
-puts "Creating expired and unconfirmed posts"
 
 email = Faker::Internet.email
-
 Post.create!(
   title: "Expired Post",
   post_type: :needed,
   street: Faker::Address.street_address,
   city: Faker::Address.city,
   state: Faker::Address.state_abbr,
+  postal_code: Faker::Address.zip_code,
   country: "US",
   neighborhood: [Faker::Address.city, ""].sample,
   description: Faker::Lorem.sentence,
@@ -49,15 +49,16 @@ Post.create!(
   validation: SecureRandom.hex,
   show: true
 )
+puts "Created expired  posts"
 
 email = Faker::Internet.email
-
 Post.create!(
   title: "Unconfirmed Post",
   post_type: :available,
   street: Faker::Address.street_address,
   city: Faker::Address.city,
   state: Faker::Address.state_abbr,
+  postal_code: Faker::Address.zip_code,
   country: "US",
   neighborhood: [Faker::Address.city, ""].sample,
   description: Faker::Lorem.sentence,
