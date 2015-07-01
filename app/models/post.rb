@@ -47,7 +47,7 @@ class Post < ActiveRecord::Base
   end
 
   def address
-    [street, city, state, country].compact.join(", ")
+    [street, city, state, postal_code, country].compact.join(", ")
   end
 
   def self.generate_validation
