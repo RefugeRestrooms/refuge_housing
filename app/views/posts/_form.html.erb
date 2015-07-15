@@ -86,6 +86,26 @@
   </p>
 
   <p>
+    <%= f.label :accuracy %><br>
+
+    <div>
+      <%= f.label :accuracy, "High", value: 100 %>
+      <%= f.radio_button :accuracy, 100 %>
+    </div>
+
+    <div>
+      <%= f.label :accuracy, "Medium", value: 1000 %>
+      <%= f.radio_button :accuracy, 1000, checked: true %>
+    </div>
+
+    <div>
+      <%= f.label :accuracy, "Low", value: 10000 %>
+      <%= f.radio_button :accuracy, 10000 %>
+    </div>
+
+  </p>
+
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

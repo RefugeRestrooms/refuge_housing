@@ -10,6 +10,7 @@ FactoryGirl.define do
     email_confirmation "foo@bar.com"
     expiration { Time.current.utc + 2.weeks }
     validation "7c745b58bd4e49d81f117ab738f451f4"
+    accuracy 2000
 
     factory :berkeley_post
 

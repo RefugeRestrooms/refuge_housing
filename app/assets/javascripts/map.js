@@ -2,11 +2,21 @@ $(function() {
   if ($('.posts.show').length) {
     var latitude = $('#map').data('latitude');
     var longitude = $('#map').data('longitude');
+    var radius = $('#map').data('accuracy');
 
-    var map = L.map('map').setView([latitude, longitude], 13);
-    var RADIUS = 1000;
+    var zoomLevel; // Wish we didn't have to manually set zoom level.
 
-    L.circle(L.latLng(latitude, longitude), RADIUS, {
+    if ( radius <= 100 ) {
+      zoomLevel = 13;
+    } else if ( radius <= 1000 ) {
+      zoomLevel = 12;
+    }else { // i.e if ( radius <= 10000 )
+      zoomLevel = 11;
+    }
+
+    var map = L.map('map').setView([latitude, longitude], zoomLevel);
+
+    L.circle(L.latLng(latitude, longitude), radius, {
         opacity: 1,
         weight: 1,
         fillOpacity: 0.4

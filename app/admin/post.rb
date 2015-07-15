@@ -9,7 +9,8 @@ ActiveAdmin.register Post do
                 :postal_code,
                 :country,
                 :neighborhood,
-                :description
+                :description,
+                :accuracy
 
   form do |f|
     f.semantic_errors(*f.object.errors.keys)
@@ -26,6 +27,7 @@ ActiveAdmin.register Post do
       f.input :expiration
       f.input :validation
       f.input :show
+      f.input :accuracy
       f.input :post_type, as: :select, collection: Post.post_types.keys
     end
     f.actions

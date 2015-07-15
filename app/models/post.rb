@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
             :country,
             :expiration,
             :validation,
+            :accuracy,
             presence: true
   validates :email,
             email: true,
@@ -38,6 +39,12 @@ class Post < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   after_validation :geocode
+
+  ACCURACIES = {
+    "High" => 500,
+    "Medium" => 2000,
+    "Low" => 8000
+  }.to_a
 
   def toggle_show(show)
     update_attributes(

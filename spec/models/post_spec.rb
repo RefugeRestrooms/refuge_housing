@@ -51,7 +51,12 @@ describe Post do
 
   describe "#address" do
     it "returns a full address with street" do
-      post = build(:post, street: "Adeline St.", city: "Berkeley", state: "CA", country: "USA")
+      post = build(:post,
+                   street: "Adeline St.",
+                   city: "Berkeley",
+                   state: "CA",
+                   country: "USA"
+                  )
 
       expect(post.address).to eq "Adeline St., Berkeley, CA, USA"
     end

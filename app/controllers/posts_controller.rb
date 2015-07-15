@@ -94,7 +94,8 @@ class PostsController < ApplicationController
         :postal_code,
         :country,
         :neighborhood,
-        :description
+        :description,
+        :accuracy
       )
   end
 
