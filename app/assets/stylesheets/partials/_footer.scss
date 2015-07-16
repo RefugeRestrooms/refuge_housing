@@ -19,7 +19,7 @@ footer {
   width: 100%;
 }
 
-.icon {
+.social-icons a {
   background: {
     position: 0 50%;
     size: 200% 100%;
@@ -28,6 +28,7 @@ footer {
   height: 10px;
   margin: 4px;
   padding: 12px;
+  text-decoration: none;
   width: 10px;
 
   &:hover {
@@ -52,15 +53,6 @@ footer {
 
   &.icon-email {
     background-image: asset-url("mail.svg");
-  }
-}
-
-.icon-link {
-  color: transparent;
-
-  &:hover {
-    color: transparent;
-    text-decoration: none;
   }
 }
 
