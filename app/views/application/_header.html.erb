@@ -1,35 +1,42 @@
-<header>
-  <div class="link-container">
-    <%=
-      link_to(
-        "Refuge Housing",
-        root_url,
-        class: "home-link"
-      )
-    %>
-    <div class="static-links">
-      <%=
-        link_to(
-          "New Post",
-          new_post_url,
-          class: "static-link"
-        )
-      %>
-      <%=
-        link_to(
-          "About",
-          about_url,
-          class: "static-link"
-        )
-      %>
-      <%=
-        link_to(
-          "Contact",
-          contact_url,
-          class: "static-link"
-        )
-      %>
-    </div>
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <%= link_to(root_url, class: "logo") do %>
+      <%= image_tag("home.png", alt: "Logo") %>
+    <% end %>
+
+    <%= link_to("Refuge Housing", root_url, class: "page-title") %>
+
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link">
+          <%=
+            link_to(
+              "New Post",
+              new_post_url,
+              class: "static-link"
+            )
+          %>
+        </li>
+        <li class="nav-link">
+          <%=
+            link_to(
+              "About",
+              about_url,
+              class: "static-link"
+            )
+          %>
+        </li>
+        <li class="nav-link">
+          <%=
+            link_to(
+              "Contact",
+              contact_url,
+              class: "static-link"
+            )
+          %>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
-
