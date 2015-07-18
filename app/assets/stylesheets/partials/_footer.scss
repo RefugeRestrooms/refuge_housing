@@ -1,10 +1,22 @@
-.footer {
-  clear: both;
-  height: 180px;
-  margin-top: -180px;
-  padding-top: 30px;
+// Rules in top of this file are modified versions of solution here:
+// http://mystrd.at/modern-clean-css-sticky-footer/
+html {
+  min-height: 100%;
   position: relative;
+}
+
+body {
+  margin: 0 0 180px; // bottom = footer height
+}
+
+footer {
+  bottom: 0;
+  height: 180px;
+  left: 0;
+  padding: 2em;
+  position: absolute;
   text-align: center;
+  width: 100%;
 }
 
 .icon {

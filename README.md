@@ -26,4 +26,4 @@ Individual test suites can be run with `rake test:<suite>` (ex. `rake test:ruboc
 
 Please cover any new code with specs. We prefer code to be covered using RSpec or Capybara.
 
-This is a great link for reference to our testing frameworks! [](https://robots.thoughtbot.com/how-we-test-rails-applications)
+ [This](https://robots.thoughtbot.com/how-we-test-rails-applications) is a great link for reference to our testing frameworks!
