@@ -71,7 +71,10 @@ select {
   width: 100%;
 }
 
-.form-error {
-  color: $red;
-  font-weight: bold;
+.field_with_errors {
+  input,
+  textarea {
+    background: $error-color;
+    font-weight: bold;
+  }
 }

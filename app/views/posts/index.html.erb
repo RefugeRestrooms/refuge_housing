@@ -5,23 +5,23 @@
 <section>
   <ul class="posts">
     <% @posts.each do |post| %>
-        <li>
-          <%= link_to(post) do %>
-            <div class="title">
-              <%= post.title %>
-            </div>
-          <% end %>
-
-          <div class="body">
-            <div>
-              <%= post.city %>, <%= post.state %>
-            </div>
-
-            <div>
-              <%= post.neighborhood %>
-            </div>
+      <li class="post">
+        <%= link_to(post) do %>
+          <div class="title">
+            <%= post.title %>
           </div>
-        </li>
+        <% end %>
+
+        <div class="body">
+          <div>
+            <%= post.city %>, <%= post.state %>
+          </div>
+
+          <div>
+            <%= post.neighborhood %>
+          </div>
+        </div>
+      </li>
     <% end %>
   </ul>
 </section>

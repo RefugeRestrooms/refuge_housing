@@ -22,7 +22,7 @@
     text-decoration: underline;
   }
 
-  ul li {
+  .post {
     @include span-columns(4);
     @include omega(3n);
     background: darken($white, 2);
@@ -42,7 +42,6 @@
       font-weight: bold;
       min-height: 5em;
       padding: $small-spacing;
-
     }
 
     .body {
