@@ -6,11 +6,11 @@ $(function() {
 
     var zoomLevel; // Wish we didn't have to manually set zoom level.
 
-    if ( radius <= 100 ) {
+    if ( radius <= 500 ) {
       zoomLevel = 13;
-    } else if ( radius <= 1000 ) {
+    } else if ( radius <= 2000 ) {
       zoomLevel = 12;
-    }else { // i.e if ( radius <= 10000 )
+    }else { // i.e if ( radius == 8000 )
       zoomLevel = 11;
     }
 
