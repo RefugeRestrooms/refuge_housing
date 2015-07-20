@@ -4,9 +4,13 @@
       @include span-columns(6);
     }
 
-    .map {
+    #map {
       @include span-columns(6);
       min-height: 400px;
+
+      a {
+        text-decoration: inherit;
+      }
     }
   }
 }
