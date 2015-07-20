@@ -25,7 +25,8 @@ number_of_fake_posts.times do |i|
     email_confirmation: email,
     expiration: Time.current.utc + 2.weeks,
     validation: SecureRandom.hex,
-    show: true
+    show: true,
+    accuracy: 2000
   )
 
   puts "Created #{(i + 1).ordinalize} fake Post (out of #{number_of_fake_posts})."
@@ -46,7 +47,8 @@ Post.create!(
   email_confirmation: email,
   expiration: Time.current.utc - 1.week,
   validation: SecureRandom.hex,
-  show: true
+  show: true,
+  accuracy: 2000
 )
 puts "Created expired  posts"
 
@@ -65,7 +67,8 @@ Post.create!(
   email_confirmation: email,
   expiration: Time.current.utc + 2.weeks,
   validation: SecureRandom.hex,
-  show: false
+  show: false,
+  accuracy: 2000
 )
 puts "Created unconfirmed posts"
 
