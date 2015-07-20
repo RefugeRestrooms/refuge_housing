@@ -59,11 +59,14 @@
     @include shift(4);
 
     text-align: center;
-    text-transform: capitalize;
 
     input {
       margin: inherit auto;
       text-align: center;
+    }
+
+    .accuracy-explanation {
+      font-size: 0.8em;
     }
   }
 
