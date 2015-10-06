@@ -38,7 +38,7 @@ class Post < ActiveRecord::Base
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
 
-  after_validation :geocode
+  after_validation :geocode if Rails.application.config.use_geocoder
 
   ACCURACIES = {
     "High" => 500,

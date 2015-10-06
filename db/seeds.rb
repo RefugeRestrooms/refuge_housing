@@ -72,7 +72,8 @@ Post.create!(
 )
 puts "Created unconfirmed posts"
 
-AdminUser.find_by_email("admin@example.com").destroy
+admin = AdminUser.find_by_email("admin@example.com")
+admin.destroy if admin
 AdminUser.create!(
   email: "admin@example.com",
   password: "password",

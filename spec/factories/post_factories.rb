@@ -11,12 +11,16 @@ FactoryGirl.define do
     expiration { Time.current.utc + 2.weeks }
     validation "7c745b58bd4e49d81f117ab738f451f4"
     accuracy 2000
+    latitude "37.8759471"
+    longitude "-122.280622"
 
     factory :berkeley_post
 
     factory :boston_post do
       city "Boston"
       state "MA"
+      latitude "42.3133735"
+      longitude "-71.0571571"
     end
 
     factory :available_post do
