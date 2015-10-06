@@ -1,0 +1,14 @@
+.posts {
+  .info {
+    @include span-columns(6);
+  }
+
+  .map {
+    @include span-columns(6);
+    min-height: 400px;
+
+    a {
+      text-decoration: inherit;
+    }
+  }
+}

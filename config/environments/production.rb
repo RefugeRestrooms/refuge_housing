@@ -79,6 +79,9 @@ Rails.application.configure do
 
   # Mailer domain
   config.action_mailer.default_url_options = { host: "http://refugehousing.herokuapp.com/" }
+
+  # geocoder on
+  config.use_geocoder = true
 end
 
 ActionMailer::Base.smtp_settings = {

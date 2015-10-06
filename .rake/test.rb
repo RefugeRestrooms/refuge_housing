@@ -15,7 +15,7 @@ begin
 
     desc "Run SCSS Linter"
     SCSSLint::RakeTask.new do |t|
-      t.config = ".scss_lint.yml"
+      t.config = ".scss-lint.yml"
     end
   end
 rescue LoadError

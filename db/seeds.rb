@@ -17,6 +17,7 @@ number_of_fake_posts.times do |i|
     street: Faker::Address.street_address,
     city: Faker::Address.city,
     state: Faker::Address.state_abbr,
+    postal_code: Faker::Address.zip_code,
     country: "US",
     neighborhood: [Faker::Address.city, ""].sample,
     description: Faker::Lorem.sentence,
@@ -24,22 +25,21 @@ number_of_fake_posts.times do |i|
     email_confirmation: email,
     expiration: Time.current.utc + 2.weeks,
     validation: SecureRandom.hex,
-    show: true
+    show: true,
+    accuracy: 2000
   )
 
   puts "Created #{(i + 1).ordinalize} fake Post (out of #{number_of_fake_posts})."
 end
 
-puts "Creating expired and unconfirmed posts"
-
 email = Faker::Internet.email
-
 Post.create!(
   title: "Expired Post",
   post_type: :needed,
   street: Faker::Address.street_address,
   city: Faker::Address.city,
   state: Faker::Address.state_abbr,
+  postal_code: Faker::Address.zip_code,
   country: "US",
   neighborhood: [Faker::Address.city, ""].sample,
   description: Faker::Lorem.sentence,
@@ -47,17 +47,19 @@ Post.create!(
   email_confirmation: email,
   expiration: Time.current.utc - 1.week,
   validation: SecureRandom.hex,
-  show: true
+  show: true,
+  accuracy: 2000
 )
+puts "Created expired  posts"
 
 email = Faker::Internet.email
-
 Post.create!(
   title: "Unconfirmed Post",
   post_type: :available,
   street: Faker::Address.street_address,
   city: Faker::Address.city,
   state: Faker::Address.state_abbr,
+  postal_code: Faker::Address.zip_code,
   country: "US",
   neighborhood: [Faker::Address.city, ""].sample,
   description: Faker::Lorem.sentence,
@@ -65,9 +67,19 @@ Post.create!(
   email_confirmation: email,
   expiration: Time.current.utc + 2.weeks,
   validation: SecureRandom.hex,
-  show: false
+  show: false,
+  accuracy: 2000
 )
+puts "Created unconfirmed posts"
+
+admin = AdminUser.find_by_email("admin@example.com")
+admin.destroy if admin
+AdminUser.create!(
+  email: "admin@example.com",
+  password: "password",
+  password_confirmation: "password"
+)
+puts "Created AdminUser (email: 'admin@example.com', password: 'password')"
 
 puts "Done! :)"
-
 # rubocop:enable Output

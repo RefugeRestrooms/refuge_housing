@@ -71,7 +71,11 @@ select {
   width: 100%;
 }
 
-.form-error {
-  color: $red;
-  font-weight: bold;
+ // scss-lint:disable SelectorFormat
+.field_with_errors {
+  input,
+  textarea {
+    background: $error-color;
+    font-weight: bold;
+  }
 }

@@ -1,6 +1,7 @@
 <% url = post_path(:id => params[:id], validation: params[:validation]) if params[:validation] %>
 <%= form_for(@post, url: url) do |f| %>
   <%= render "posts/form_error", :target => @post %>
+
   <div class="button-group">
     <label>
       <%=
@@ -21,36 +22,38 @@
       <span class="button-group-item">Available</span>
     </label>
   </div>
+
   <p></p>
+
   <p>
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </p>
 
   <p>
-    <%= f.label :email %><br>
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </p>
 
   <% unless request.original_url.include?("edit") %>
-  <p>
-    <%= f.label :email_confirmation %>
-    <%= f.text_field :email_confirmation %>
-  </p>
+    <p>
+      <%= f.label :email_confirmation %>
+      <%= f.text_field :email_confirmation %>
+    </p>
   <% end %>
 
   <p>
-    <%= f.label :street %><br>
+    <%= f.label :street %>
     <%= f.text_field :street %>
   </p>
 
   <p>
-    <%= f.label :city %><br>
+    <%= f.label :city %>
     <%= f.text_field :city %>
   </p>
 
   <p>
-    <%= f.label :country %><br>
+    <%= f.label :country %>
     <%=
       f.country_select(
         :country,
@@ -60,7 +63,7 @@
   </p>
 
   <p>
-    <%= f.label :state %><br>
+    <%= f.label :state %>
     <%=
       f.subdivision_select(
         :state,
@@ -71,13 +74,33 @@
   </p>
 
   <p>
-    <%= f.label :neighborhood %><br>
+    <%= f.label :postal_code, "Zip Code / Postal Code" %>
+    <%= f.text_field :postal_code %>
+  </p>
+
+  <p>
+    <%= f.label :neighborhood %>
     <%= f.text_field :neighborhood %>
   </p>
 
   <p>
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.label :accuracy %>
+
+    <p class="accuracy-explanation">
+      We'll show a map with your location. Rather than showing your actual address, we display a circle, to protect your privacy. We recommend using a higher accuracy for cities, and a lower accuracy for rural areas.
+    </p>
+
+    <% Post::ACCURACIES.each do |name, meters| %>
+      <div>
+        <%= f.label :accuracy, "#{name} (#{meters} meters)", value: meters %>
+        <%= f.radio_button :accuracy, meters, checked: name == "Medium" %>
+      </div>
+    <% end %>
   </p>
 
   <p>
