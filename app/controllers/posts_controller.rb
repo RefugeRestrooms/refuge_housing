@@ -60,11 +60,11 @@ class PostsController < ApplicationController
   def confirm
     redirect_to(validation_error_url) && return unless check_validation
 
-    post = Post.find_by_validation(params[:validation])
-    redirect_to(validation_error_url) && return if post.nil?
+    @post = Post.find_by_validation(params[:validation])
+    redirect_to(validation_error_url) && return if @post.nil?
 
-    post.toggle_show(true)
-    ConfirmationMailer.posted_email(post).deliver_now
+    @post.toggle_show(true)
+    ConfirmationMailer.posted_email(@post).deliver_now
   end
 
   # Get wrapper/confirmation for destroy
@@ -91,9 +91,11 @@ class PostsController < ApplicationController
         :street,
         :city,
         :state,
+        :postal_code,
         :country,
         :neighborhood,
-        :description
+        :description,
+        :accuracy
       )
   end
 

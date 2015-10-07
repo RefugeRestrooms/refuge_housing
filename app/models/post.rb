@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
             :country,
             :expiration,
             :validation,
+            :accuracy,
             presence: true
   validates :email,
             email: true,
@@ -37,7 +38,13 @@ class Post < ActiveRecord::Base
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
 
-  after_validation :geocode
+  after_validation :geocode if Rails.application.config.use_geocoder
+
+  ACCURACIES = {
+    "High" => 500,
+    "Medium" => 2000,
+    "Low" => 8000
+  }.to_a
 
   def toggle_show(show)
     update_attributes(
@@ -47,7 +54,7 @@ class Post < ActiveRecord::Base
   end
 
   def address
-    [street, city, state, country].compact.join(", ")
+    [street, city, state, postal_code, country].compact.join(", ")
   end
 
   def self.generate_validation

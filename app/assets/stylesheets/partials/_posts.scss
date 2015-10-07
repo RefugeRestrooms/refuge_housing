@@ -22,7 +22,7 @@
     text-decoration: underline;
   }
 
-  ul li {
+  .post {
     @include span-columns(4);
     @include omega(3n);
     background: darken($white, 2);
@@ -42,7 +42,6 @@
       font-weight: bold;
       min-height: 5em;
       padding: $small-spacing;
-
     }
 
     .body {
@@ -53,42 +52,44 @@
   .description {
     font-style: italic;
   }
-}
 
-form {
-  @include span-columns(4);
-  @include shift(4);
+  form {
+    @include span-columns(4);
+    @include shift(4);
 
-  text-align: center;
-  text-transform: capitalize;
+    text-align: center;
 
-  input {
-    display: inherit;
-    margin: inherit auto;
+    input {
+      margin: inherit auto;
+      text-align: center;
+    }
+
+    .accuracy-explanation {
+      font-size: 0.8em;
+    }
+  }
+
+  .search-form {
+    @include span-columns(6);
+    margin-left: 0;
+    width: 100%;
+  }
+
+  input[type="search"] {
+    width: 30%;
+  }
+
+  .search-field {
+    display: inline;
+    width: auto;
+  }
+
+  .search-submit {
+    display: inline;
+    width: 100px;
+  }
+
+  .confirmation-text {
     text-align: center;
   }
-}
-
-.search-form {
-  @include span-columns(6);
-  margin-left: 0;
-  width: 100%;
-}
-
-input[type="search"] {
-  width: 30%;
-}
-
-.search-field {
-  display: inline;
-  width: auto;
-}
-
-.search-submit {
-  display: inline;
-  width: 100px;
-}
-
-.confirmation-text {
-  text-align: center;
 }

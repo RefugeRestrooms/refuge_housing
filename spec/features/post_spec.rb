@@ -135,3 +135,25 @@ describe "the edit process" do
     expect(page).to have_content("Edited Title")
   end
 end
+
+describe "the post showing process" do
+  it "shows city/state/neighborhood but not street address" do
+    post = create(:post, street: "924 Gilman Street")
+
+    visit post_url(id: post.id)
+
+    expect(page).to have_content(post.city)
+    expect(page).to have_content(post.state)
+    expect(page).to have_content(post.neighborhood)
+    expect(page).to_not have_content(post.street)
+  end
+
+  it "shows map" do
+    post = create(:post)
+
+    visit post_url(id: post.id)
+
+    expect(page).to have_css("#map")
+    # We should use a JS enabled driver, so we can check if mapkit loads
+  end
+end

@@ -2,31 +2,34 @@
   <%= @post.title %>
 </h1>
 
-<div>
-  <%= @post.city %>
+<div class="info">
+  <div class="description">
+    <%= @post.description %>
+  </div>
+
+  <div class="city">
+    <%= @post.city %>
+  </div>
+
+  <div class="state">
+    <%= @post.state %>
+  </div>
+
+  <div class="neighborhood">
+    <%= @post.neighborhood %>
+  </div>
+
+  <div class="country">
+    <%= @post.country %>
+  </div>
 </div>
 
-<div>
-  <%= @post.state %>
-</div>
-
-<div>
-  <%= @post.neighborhood %>
-</div>
-
-<div>
-  <%= @post.country %>
-</div>
-
-<div class="description">
-  <%= @post.description %>
-</div>
-
-<div>
-  <%=
-    link_to(
-      "map",
-      "https://www.google.com/maps?hl=en&q=#{ maps_query(@post) }"
-    )
-  %>
+<div id="map"
+     class="map"
+     data-latitude="<%= @post.latitude.round(2) %>"
+     data-longitude="<%= @post.longitude.round(2) %>"
+     data-accuracy="<%= @post.accuracy %>">
+  <%# Filled in via JS with leaflet %>
+  <%# TODO: we should fix this rounding so that it's actually more rounded
+            for lower levels of 'accuracy' %>
 </div>
