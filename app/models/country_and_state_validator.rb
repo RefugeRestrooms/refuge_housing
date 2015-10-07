@@ -14,14 +14,14 @@ class CountryAndStateValidator < ActiveModel::Validator
   private
 
   def country_is_valid(country)
-    Country[country].present?
+    ISO3166::Country[country].present?
   end
 
   # True only if the country:
   # - has no subdivisions, OR
   # - has a valid subdivision for the country
   def state_is_valid(country, state)
-    Country[country].subdivisions.blank? ||
-      Country[country].subdivisions[state].present?
+    ISO3166::Country[country].subdivisions.blank? ||
+      ISO3166::Country[country].subdivisions[state].present?
   end
 end
