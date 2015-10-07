@@ -1,6 +1,6 @@
-scss_files: "app/assets/stylesheets/**/*.css.scss"
+scss_files: "app/assets/stylesheets/**/*.scss"
 
-exclude: 
+exclude:
   - "vendor/**/*"
   - "coverage/**/*"
 
@@ -19,5 +19,14 @@ linters:
   SelectorDepth:
     max_depth: 4
 
+  NestingDepth:
+    max_depth: 4
+
   StringQuotes:
     style: double_quotes
+
+  ColorKeyword:
+    enabled: false
+
+  ColorVariable:
+    enabled: false
