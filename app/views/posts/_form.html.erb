@@ -43,7 +43,7 @@
   <% end %>
 
   <p>
-    <%= f.label :street %>
+    <%= f.label :street, "Street (optional)"%>
     <%= f.text_field :street %>
   </p>
 
@@ -74,17 +74,17 @@
   </p>
 
   <p>
-    <%= f.label :postal_code, "Zip Code / Postal Code" %>
+    <%= f.label :postal_code, "Zip Code / Postal Code (optional)" %>
     <%= f.text_field :postal_code %>
   </p>
 
   <p>
-    <%= f.label :neighborhood %>
+    <%= f.label :neighborhood , "Neighborhood (optional)"%>
     <%= f.text_field :neighborhood %>
   </p>
 
   <p>
-    <%= f.label :description %>
+    <%= f.label :description , "Description (optional)"%>
     <%= f.text_area :description %>
   </p>
 
