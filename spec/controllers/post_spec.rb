@@ -27,12 +27,10 @@ describe PostsController, type: :controller do
         show: true
       )
 
-      # rubocop:disable UselessAssignment
-      post2 = create(
+      create(
         :berkeley_post,
         show: true
       )
-      # rubocop:enable UselessAssignment
 
       get :index, location: "Boston, MA"
 
@@ -45,12 +43,11 @@ describe PostsController, type: :controller do
         description: "Need housing in Boston",
         show: true
       )
-      # rubocop:disable UselessAssignment
-      post2 = create(
+
+      create(
         :post,
         show: true
       )
-      # rubocop:enable UselessAssignment
 
       get :index, query: "Need housing in Boston"
 
@@ -63,16 +60,16 @@ describe PostsController, type: :controller do
         description: "Need housing in Boston",
         show: true
       )
-      # rubocop:disable UselessAssignment
-      post2 = create(
+
+      create(
         :boston_post,
         show: true
       )
-      post3 = create(
+
+      create(
         :berkeley_post,
         show: true
       )
-      # rubocop:enable UselessAssignment
 
       get :index, location: "Boston, MA", query: "Need housing in Boston"
 
@@ -103,8 +100,7 @@ describe PostsController, type: :controller do
     end
 
     it "redirects to error page when invalid" do
-      # rubocop:disable UselessAssignment
-      post = create(
+      create(
         :post,
         id: 1,
         validation: "0f21473d03145662d38ce4ea1ebac790"
@@ -112,16 +108,13 @@ describe PostsController, type: :controller do
       get :confirm, validation: "0f21473d03145662d38ce4ea1ebac791"
 
       expect(response).to redirect_to validation_error_url
-      # rubocop:enable UselessAssignment
     end
 
     it "redirects to error page without validation" do
-      # rubocop:disable UselessAssignment
-      post = create(:post)
+      create(:post)
       get :confirm
 
       expect(response).to redirect_to validation_error_url
-      # rubocop:enable UselessAssignment
     end
   end
 
