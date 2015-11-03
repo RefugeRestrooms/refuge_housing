@@ -13,6 +13,7 @@ FactoryGirl.define do
     accuracy 2000
     latitude "37.8759471"
     longitude "-122.280622"
+    show true
 
     factory :berkeley_post
 
@@ -27,6 +28,10 @@ FactoryGirl.define do
       title "Have couch in Berkeley"
       description "Have couch in Berkeley for two weeks"
       post_type :available
+    end
+
+    factory :hidden_post do
+      show false
     end
   end
 end
