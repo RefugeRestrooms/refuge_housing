@@ -57,12 +57,22 @@ describe "the post submission process" do
     expect(page).to have_content("Submit a New Post")
   end
 
-  it "submits a new post with success" do
+  it "submits a new 'needed' post with success" do
     visit new_post_url
     fill_in_post_form
     click_button "Create Post"
 
     expect(page).to have_content("confirmation")
+  end
+
+  it "submits a new 'available' post with success" do
+    visit new_post_url
+    fill_in_post_form
+    choose :post_post_type_available
+    click_button "Create Post"
+
+    expect(page).to have_content("confirmation")
+    expect(Post.last.post_type).to eq("available")
   end
 
   it "invalidates blank fields" do
