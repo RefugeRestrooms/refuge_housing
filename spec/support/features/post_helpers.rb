@@ -1,5 +1,5 @@
 def fill_in_post_form
-  choose :post_post_type_needed
+  choose "Needed"
   fill_in "Title", with: "I need housing"
   fill_in "Email", with: "foo@bar.com"
   fill_in "Email confirmation", with: "foo@bar.com"

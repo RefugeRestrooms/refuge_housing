@@ -68,7 +68,6 @@ class Post < ActiveRecord::Base
 
   def self.create_default_params(init_params)
     init_params[:expiration] = (Time.current.utc + 1.day).iso8601
-    init_params[:post_type] = init_params[:post_type].to_i
     init_params[:validation] = generate_validation
     init_params
   end
