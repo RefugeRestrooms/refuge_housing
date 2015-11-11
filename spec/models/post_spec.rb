@@ -5,7 +5,7 @@ describe Post do
     it "returns only active posts" do
       active_post = create(:post, show: true)
       # rubocop:disable UselessAssignment
-      non_active_post = create(:post)
+      non_active_post = create(:hidden_post)
 
       result = Post.active
 
