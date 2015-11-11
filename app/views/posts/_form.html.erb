@@ -3,24 +3,17 @@
   <%= render "posts/form_error", :target => @post %>
 
   <div class="button-group">
-    <label>
-      <%=
-        f.radio_button(
-          :post_type,
-          :needed,
-          checked: true
-        )
-      %>
-      <span class="button-group-item">Needed</span>
-    </label><label>
-      <%=
-        f.radio_button(
-          :post_type,
-          :available
-        )
-      %>
-      <span class="button-group-item">Available</span>
-    </label>
+    <% Post.post_types.keys.each do |post_type_name| %>
+      <label>
+        <%=
+          f.radio_button(
+            :post_type,
+            post_type_name
+          )
+        %>
+        <span class="button-group-item"><%= post_type_name.humanize %></span>
+      </label>
+    <% end %>
   </div>
 
   <p></p>

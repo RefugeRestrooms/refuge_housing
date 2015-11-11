@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(post_type: "needed")
   end
 
   def create
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
     @post = Post.find_by_validation(params[:validation])
 
-    if @post.update_attributes(post_params.merge(post_type: post_params[:post_type].to_i))
+    if @post.update_attributes(post_params)
       redirect_to @post
     else
       render action: "edit"

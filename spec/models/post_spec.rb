@@ -88,11 +88,5 @@ describe Post do
 
       expect(params).to include(:expiration)
     end
-
-    it "converts post type to int" do
-      params = Post.create_default_params(post_type: "1")
-
-      expect(params).to include(post_type: 1)
-    end
   end
 end

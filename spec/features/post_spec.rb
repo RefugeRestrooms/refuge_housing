@@ -9,7 +9,7 @@ describe "the search process", type: :feature do
 
     visit root_url
     fill_in "location", with: "Berkeley"
-    choose :type_needed
+    choose "Needed"
     click_button "Search"
 
     expect(page).to have_content post.title
@@ -57,12 +57,30 @@ describe "the post submission process" do
     expect(page).to have_content("Submit a New Post")
   end
 
-  it "submits a new post with success" do
+  it "submits a new 'needed' post with success" do
     visit new_post_url
     fill_in_post_form
     click_button "Create Post"
 
     expect(page).to have_content("confirmation")
+  end
+
+  it "submits a new default post which should be 'needed'" do
+    visit new_post_url
+    fill_in_post_form
+    click_button "Create Post"
+
+    expect(Post.last.post_type).to eq("needed")
+  end
+
+  it "submits a new 'available' post with success" do
+    visit new_post_url
+    fill_in_post_form
+    choose "Available"
+    click_button "Create Post"
+
+    expect(page).to have_content("confirmation")
+    expect(Post.last.post_type).to eq("available")
   end
 
   it "invalidates blank fields" do
