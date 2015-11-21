@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do
-      get "confirm/:validation", to: "posts#confirm",
-                                 as: :confirm,
-                                 constraints: { validation: /.{32}/ }
+      constraints validation: /.{32}/ do
+        get "confirm/:validation", to: "posts#confirm", as: :confirm
+      end
+      get "confirm/:validation", to: "posts#validation_error" # if ^^^^ fails
     end
   end
 
