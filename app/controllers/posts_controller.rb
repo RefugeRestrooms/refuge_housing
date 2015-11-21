@@ -1,4 +1,10 @@
 class PostsController < ApplicationController
+  before_action :check_validation, only: [:confirm,
+                                          :edit,
+                                          :delete,
+                                          :destroy,
+                                          :update]
+
   def index
     if check_for_search_params
       @posts = post_search
@@ -23,8 +29,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    redirect_to(validation_error_url) && return unless check_validation
-
     @post = Post.find(params[:id])
   end
 
@@ -33,8 +37,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    redirect_to(validation_error_url) && return unless check_validation
-
     @post = Post.find_by_validation(params[:validation])
 
     if @post.update_attributes(post_params)
@@ -45,8 +47,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    redirect_to(validation_error_url) && return unless check_validation
-
     post = Post.find_by_validation(params[:validation])
     redirect_to(validation_error_url) && return if post.nil?
 
@@ -58,8 +58,6 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    redirect_to(validation_error_url) && return unless check_validation
-
     @post = Post.find_by_validation(params[:validation])
     redirect_to(validation_error_url) && return if @post.nil?
 
@@ -69,7 +67,7 @@ class PostsController < ApplicationController
 
   # Get wrapper/confirmation for destroy
   def delete
-    redirect_to(validation_error_url) && return unless check_validation && params.key?(:id)
+    redirect_to(validation_error_url) && return unless params.key?(:id)
   end
 
   def validation_error
@@ -78,7 +76,9 @@ class PostsController < ApplicationController
   private
 
   def check_validation
-    params.key?(:validation) && params[:validation].match(/^.{32}$/)
+    unless params.key?(:validation) && params[:validation].match(/^.{32}$/)
+      redirect_to(validation_error_url)
+    end
   end
 
   def post_params
