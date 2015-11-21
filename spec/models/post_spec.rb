@@ -87,4 +87,22 @@ describe Post do
       expect(params).to include(:expiration)
     end
   end
+
+  describe ".rounded_latitude" do
+    it "rounds to two places" do
+      post = create(:post, city: "Berkeley", state: "CA", show: true)
+      post.latitude = 0.12345
+
+      expect(post.rounded_latitude).to eq 0.12
+    end
+  end
+
+  describe ".rounded_longitude" do
+    it "rounds to two places" do
+      post = create(:post, city: "Berkeley", state: "CA", show: true)
+      post.longitude = 0.98765
+
+      expect(post.rounded_longitude).to eq 0.99
+    end
+  end
 end

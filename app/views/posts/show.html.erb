@@ -26,8 +26,8 @@
 
 <div id="map"
      class="map"
-     data-latitude="<%= @post.latitude.round(2) %>"
-     data-longitude="<%= @post.longitude.round(2) %>"
+     data-latitude="<%= @post.rounded_latitude %>"
+     data-longitude="<%= @post.rounded_longitude %>"
      data-accuracy="<%= @post.accuracy %>">
   <%# Filled in via JS with leaflet %>
   <%# TODO: we should fix this rounding so that it's actually more rounded
