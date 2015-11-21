@@ -4,12 +4,10 @@ describe Post do
   describe ".active" do
     it "returns only active posts" do
       active_post = create(:post, show: true)
-      # rubocop:disable UselessAssignment
-      non_active_post = create(:hidden_post)
+      inactive_post = create(:hidden_post)
 
-      result = Post.active
-
-      expect(result).to eq [active_post]
+      expect(Post.active).to include(active_post)
+      expect(Post.active).not_to include(inactive_post)
     end
   end
 
