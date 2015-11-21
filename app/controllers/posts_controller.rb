@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+  before_action :assign_post_by_validation_and_id, only: [ :edit,
+                                                           :update,
+                                                           :destroy,
+                                                           :confirm ]
+
   def index
     if check_for_search_params
       @posts = post_search
@@ -23,7 +28,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def show
@@ -31,8 +35,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by_validation(params[:validation])
-
     if @post.update_attributes(post_params)
       redirect_to @post
     else
@@ -41,20 +43,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find_by_validation(params[:validation])
-    redirect_to(validation_error_url) && return if post.nil?
+    @post.toggle_show(false)
 
-    post.toggle_show(false)
-
-    ConfirmationMailer.deleted_email(post).deliver_now
+    ConfirmationMailer.deleted_email(@post).deliver_now
 
     flash[:notice] = "Post successfully deleted"
   end
 
   def confirm
-    @post = Post.find_by_validation(params[:validation])
-    redirect_to(validation_error_url) && return if @post.nil?
-
     @post.toggle_show(true)
     ConfirmationMailer.posted_email(@post).deliver_now
   end
@@ -63,6 +59,15 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def assign_post_by_validation_and_id
+    @post = Post.where( id: find_post_params[:id],
+                        validation: find_post_params[:validation]).first
+
+    if @post.nil?
+      redirect_to(validation_error_url) and return
+    end
+  end
 
   def post_params
     params.require(:post)
@@ -80,6 +85,10 @@ class PostsController < ApplicationController
         :description,
         :accuracy
       )
+  end
+
+  def find_post_params
+    params.permit(:id, :validation)
   end
 
   def check_for_search_params

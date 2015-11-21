@@ -7,11 +7,16 @@ Rails.application.routes.draw do
   get "posts/success", to: "posts#success"
   get "validation_error", to: "posts#validation_error"
 
-  resources :posts do
+  resources :posts, except: [:edit] do
     member do
       constraints validation: /.{32}/ do
-        get "confirm/:validation", to: "posts#confirm", as: :confirm
+        # Adds 'validation' URL param to routes we'd get from `resources`
+        get    "edit/:validation",    to: "posts#edit",    as: :edit
+
+        # A custom
+        get    "confirm/:validation", to: "posts#confirm", as: :confirm
       end
+
       get "confirm/:validation", to: "posts#validation_error" # if ^^^^ fails
     end
   end

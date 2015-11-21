@@ -1,5 +1,7 @@
-<% url = post_path(:id => params[:id], validation: params[:validation]) if params[:validation] %>
-<%= form_for(@post, url: url) do |f| %>
+<%= form_for(@post) do |f| %>
+  <%= hidden_field_tag :validation, @post.validation %>
+  <%= hidden_field_tag :id, @post.id %>
+
   <%= render "posts/form_error", :target => @post %>
 
   <div class="button-group">
