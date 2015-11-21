@@ -9,9 +9,6 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do
-      get "delete/:validation", to: "posts#delete",
-                                as: :delete,
-                                constraints: { validation: /.{32}/ }
       get "confirm/:validation", to: "posts#confirm",
                                  as: :confirm,
                                  constraints: { validation: /.{32}/ }

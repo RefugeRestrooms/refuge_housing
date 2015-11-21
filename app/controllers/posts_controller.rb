@@ -59,9 +59,6 @@ class PostsController < ApplicationController
     ConfirmationMailer.posted_email(@post).deliver_now
   end
 
-  def delete
-  end
-
   def validation_error
   end
 
