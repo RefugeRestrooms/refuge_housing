@@ -114,7 +114,7 @@ describe "the post confirmation process" do
   it "confirms a post from given link" do
     post = create(:post)
 
-    visit posts_confirm_url(id: post.id, validation: post.validation)
+    visit confirm_post_url(post.id, post.validation)
 
     expect(page).to have_content("confirmed")
   end
@@ -124,7 +124,7 @@ describe "the post deletion process" do
   it "deletes a post from given link" do
     post = create(:post)
 
-    visit posts_delete_url(id: post.id, validation: post.validation)
+    visit delete_post_url(post.id, post.validation)
     click_button "Delete"
 
     expect(page).to have_content("successfully")

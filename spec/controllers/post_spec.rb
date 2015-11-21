@@ -94,7 +94,7 @@ describe PostsController, type: :controller do
   describe "GET #confirm" do
     it "activates a post" do
       post = create(:post)
-      get :confirm, validation: post.validation
+      get :confirm, id: post.id, validation: post.validation
 
       expect(Post.active).to match_array([post])
     end
@@ -105,14 +105,7 @@ describe PostsController, type: :controller do
         id: 1,
         validation: "0f21473d03145662d38ce4ea1ebac790"
       )
-      get :confirm, validation: "0f21473d03145662d38ce4ea1ebac791"
-
-      expect(response).to redirect_to validation_error_url
-    end
-
-    it "redirects to error page without validation" do
-      create(:post)
-      get :confirm
+      get :confirm, id: 1, validation: "0f21473d03145662d38ce4ea1ebac791"
 
       expect(response).to redirect_to validation_error_url
     end

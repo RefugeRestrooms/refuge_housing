@@ -1,10 +1,4 @@
 class PostsController < ApplicationController
-  before_action :check_validation, only: [:confirm,
-                                          :edit,
-                                          :delete,
-                                          :destroy,
-                                          :update]
-
   def index
     if check_for_search_params
       @posts = post_search
@@ -65,21 +59,13 @@ class PostsController < ApplicationController
     ConfirmationMailer.posted_email(@post).deliver_now
   end
 
-  # Get wrapper/confirmation for destroy
   def delete
-    redirect_to(validation_error_url) && return unless params.key?(:id)
   end
 
   def validation_error
   end
 
   private
-
-  def check_validation
-    unless params.key?(:validation) && params[:validation].match(/^.{32}$/)
-      redirect_to(validation_error_url)
-    end
-  end
 
   def post_params
     params.require(:post)
