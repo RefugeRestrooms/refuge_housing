@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :assign_post_by_validation_and_id, only: [ :edit,
-                                                           :update,
-                                                           :destroy,
-                                                           :confirm ]
+  before_action :assign_post_by_validation_and_id, only: [:edit,
+                                                          :update,
+                                                          :destroy,
+                                                          :confirm]
 
   def index
     if check_for_search_params
@@ -61,12 +61,10 @@ class PostsController < ApplicationController
   private
 
   def assign_post_by_validation_and_id
-    @post = Post.where( id: find_post_params[:id],
-                        validation: find_post_params[:validation]).first
+    @post = Post.where(id: find_post_params[:id],
+                       validation: find_post_params[:validation]).first
 
-    if @post.nil?
-      redirect_to(validation_error_url) and return
-    end
+    redirect_to(validation_error_url) && return if @post.nil?
   end
 
   def post_params
