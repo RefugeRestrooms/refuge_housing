@@ -5,10 +5,10 @@ class PostsController < ApplicationController
                                                           :confirm]
 
   def index
-    @posts = Post.active.
-                filter_near(search_params[:location]).
-                filter_query(search_params[:query]).
-                filter_type(search_params[:type])
+    @posts = Post.active
+             .filter_near(search_params[:location])
+             .filter_query(search_params[:query])
+             .filter_type(search_params[:type])
   end
 
   def new
