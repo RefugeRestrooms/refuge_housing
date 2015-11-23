@@ -57,6 +57,34 @@ class Post < ActiveRecord::Base
     [street, city, state, postal_code, country].compact.join(", ")
   end
 
+  def self.filter_type(type)
+    if type == "needed" || type == "available"
+      send(type.to_sym)
+    else
+      all
+    end
+  end
+
+  def self.filter_near(location)
+    results = near(location)
+
+    if results.blank?
+      all
+    else
+      results
+    end
+  end
+
+  def self.filter_query(query)
+    results = search(query)
+
+    if results.blank?
+      all
+    else
+      results
+    end
+  end
+
   def self.generate_validation
     require "securerandom"
     # a collision here has low probability, but might as well check

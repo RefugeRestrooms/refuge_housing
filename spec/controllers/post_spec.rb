@@ -4,8 +4,8 @@ describe PostsController, type: :controller do
   describe "GET #index" do
     it "responds successfully with an HTTP 200 status code" do
       get :index
+
       expect(response).to be_success
-      expect(response).to have_http_status(200)
     end
 
     it "renders the index template" do
@@ -21,7 +21,7 @@ describe PostsController, type: :controller do
       expect(assigns(:posts)).to match_array([post1, post2])
     end
 
-    it "searches for location" do
+    it "searches by location" do
       post1 = create(
         :boston_post,
         show: true
@@ -37,7 +37,24 @@ describe PostsController, type: :controller do
       expect(assigns(:posts)).to match_array([post1])
     end
 
-    it "searches for description" do
+    it "searches by title" do
+      post1 = create(
+        :post,
+        title: "Xyz",
+        show: true
+      )
+
+      create(
+        :post,
+        show: true
+      )
+
+      get :index, query: "xyz"
+
+      expect(assigns(:posts)).to match_array([post1])
+    end
+
+    it "searches by description" do
       post1 = create(
         :post,
         description: "Need housing in Boston",
@@ -54,7 +71,7 @@ describe PostsController, type: :controller do
       expect(assigns(:posts)).to match_array([post1])
     end
 
-    it "searches for description and location" do
+    it "searches by description and location" do
       post1 = create(
         :boston_post,
         description: "Need housing in Boston",

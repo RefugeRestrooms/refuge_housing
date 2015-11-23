@@ -28,7 +28,7 @@ describe "the search process", type: :feature do
     expect(page).to have_content post.title
   end
 
-  it "shows a post with a query in it's description" do
+  it "shows a post with a query in its description" do
     post1 = create(
       :available_post,
       description: "I want some tofu pups",

@@ -5,11 +5,10 @@ class PostsController < ApplicationController
                                                           :confirm]
 
   def index
-    if check_for_search_params
-      @posts = post_search
-    else
-      @posts = Post.active
-    end
+    @posts = Post.active.
+                filter_near(search_params[:location]).
+                filter_query(search_params[:query]).
+                filter_type(search_params[:type])
   end
 
   def new
@@ -89,40 +88,7 @@ class PostsController < ApplicationController
     params.permit(:id, :validation)
   end
 
-  def check_for_search_params
-    [:type, :location, :query].any? { |k| params.key?(k) }
-  end
-
-  def query_location(posts)
-    if params[:location].blank?
-      posts
-    else
-      posts.near(params[:location])
-    end
-  end
-
-  def query_description(posts)
-    if params[:query].blank?
-      posts
-    else
-      posts.search(params[:query])
-    end
-  end
-
-  def filter_type(posts)
-    if params[:type] == "available"
-      posts.available
-    elsif params[:type] == "needed"
-      posts.needed
-    else
-      posts
-    end
-  end
-
-  def post_search
-    posts = Post.active
-    posts = query_location(posts)
-    posts = query_description(posts)
-    filter_type(posts)
+  def search_params
+    params.permit(:location, :query, :type)
   end
 end
