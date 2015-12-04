@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root "posts#index"
 
-  # Can we remove these in favor of using the flash, and redirecting?
+  # TODO: Can we remove these in favor of using the flash, and redirecting?
   get "posts/success", to: "posts#success"
   get "validation_error", to: "posts#validation_error"
 
