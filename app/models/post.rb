@@ -58,8 +58,10 @@ class Post < ActiveRecord::Base
   end
 
   def self.filter_type(type)
-    if type == "needed" || type == "available"
-      send(type.to_sym)
+    if post_types.keys.include?(type)
+      # TODO: For rails 5 we can just do post_type: type
+      # (see: rails/rails#18387)
+      where(post_type: post_types[type])
     else
       all
     end
