@@ -58,7 +58,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.filter_type(type)
-    if post_types.keys.include?(type)
+    if type.present?
       # TODO: For rails 5 we can just do post_type: type
       # (see: rails/rails#18387)
       where(post_type: post_types[type])
@@ -68,22 +68,18 @@ class Post < ActiveRecord::Base
   end
 
   def self.filter_near(location)
-    results = near(location)
-
-    if results.blank?
-      all
+    if location.present?
+      near(location)
     else
-      results
+      all
     end
   end
 
   def self.filter_query(query)
-    results = search(query)
-
-    if results.blank?
-      all
+    if query.present?
+      search(query)
     else
-      results
+      all
     end
   end
 
