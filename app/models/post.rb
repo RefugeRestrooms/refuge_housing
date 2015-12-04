@@ -57,6 +57,14 @@ class Post < ActiveRecord::Base
     [street, city, state, postal_code, country].compact.join(", ")
   end
 
+  def rounded_latitude
+    latitude.try(:round, 2)
+  end
+
+  def rounded_longitude
+    longitude.try(:round, 2)
+  end
+
   def self.generate_validation
     require "securerandom"
     # a collision here has low probability, but might as well check
