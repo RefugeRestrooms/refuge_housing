@@ -38,9 +38,11 @@ describe PostsController, type: :controller do
     end
 
     it "searches by title" do
+      title = "Xyz"
+
       post1 = create(
         :post,
-        title: "Xyz",
+        title: title,
         show: true
       )
 
@@ -49,7 +51,7 @@ describe PostsController, type: :controller do
         show: true
       )
 
-      get :index, query: "xyz"
+      get :index, query: title
 
       expect(assigns(:posts)).to match_array([post1])
     end
