@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :posts, except: [:edit] do
     member do
-      constraints validation: /.{32}/ do
+      constraints validation: /[[:alnum:]]{32}/ do
         get    "edit/:validation",    to: "posts#edit",    as: :edit
         get    "confirm/:validation", to: "posts#confirm", as: :confirm
       end
