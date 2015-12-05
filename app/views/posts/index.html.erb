@@ -23,5 +23,8 @@
         </div>
       </li>
     <% end %>
+    <% if @posts.empty? %>
+      Sorry, there were no results for your search :(
+    <% end %>
   </ul>
 </section>

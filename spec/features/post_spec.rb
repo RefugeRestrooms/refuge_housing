@@ -47,6 +47,13 @@ describe "the search process", type: :feature do
     expect(page).to have_content post1.title
     expect(page).to have_no_content post2.title
   end
+
+  it "shows a message if there are no posts" do
+    visit root_url
+    click_button "Search"
+
+    expect(page).to have_content "Sorry"
+  end
 end
 
 describe "the post submission process" do
